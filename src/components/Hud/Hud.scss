@@ -2,6 +2,8 @@
 
 .hud {
 
+  font-size: 20pt;
+  vertical-align: middle;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,7 +24,7 @@
     &::before { margin-right: 0.5em; }
 
     &--time::before  { content: "⏳"; }
-    &--tapes::before { content: "📼"; }
+    &--tapes::before { content: "💎"; }
   }
 
   &__label {

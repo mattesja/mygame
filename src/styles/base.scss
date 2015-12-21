@@ -9,8 +9,7 @@ html {
 }
 
 body {
-  font: $cellSize/1 monospace;
-  text-transform: uppercase;
+  font: $cellSize/1;
   color: #fff;
   background-color: darken($uiColor, 10%);
 }
