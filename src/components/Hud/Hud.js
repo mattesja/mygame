@@ -100,7 +100,7 @@ export default createPureComponent({
           <div className="hud__item hud__item--health">
             <div className="hud__label">Life</div>
             <div className="hud__content">
-              {this.renderHealth(healthTotal, health)}
+              {health}
             </div>
           </div>
           <div className="hud__item hud__item--powerups">

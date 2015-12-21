@@ -16,6 +16,7 @@ const canBlock = returnTrue;
 const canCollect = returnTrue;
 const canDestroy = returnTrue;
 const canKill = returnTrue;
+const canHeal = returnTrue;
 const canWin = (s) => s.get('numTapes') >= level.getNumTapesTotal(s);
 
 const blocksUnless = (hasAbility) => ({
@@ -83,7 +84,7 @@ export const entities = {
   ZR: { type: 'storesign--t', canBlock },
   ZS: { type: 'storesign--r', canBlock },
   // Killers without items
-  DA: { type: 'sun',     canKill: not(hasSunglasses) },
+  DA: { type: 'sun',     canHeal: not(hasSunglasses) },
   DB: { type: 'corn',    canBlock: not(hasSilverware), canDestroy: hasSilverware },
   DC: { type: 'wave',    canBlock: not(hasSpeedboat) },
   DD: { type: 'fire',    canKill: not(hasBoots), canDestroy: hasBoots },

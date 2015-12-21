@@ -16,6 +16,7 @@ import {
   canDestroy,
   canDie,
   canKill,
+  canHeal,
   canWin
 } from 'state/definitions/abilities';
 
@@ -70,6 +71,7 @@ export function reduce(state, { direction }) {
   const ghostify       = (s) => level.setEntityPropAt(newCol, newRow, 'type', 'ghost', s);
   const collect        = (s) => (type === 'tape') ? incrementTapes(s) : addPowerup(s);
   const hurt           = (s) => s.update('health', (h) => h - 1);
+  const heal         = (s) => s.update('health', (h) => h + 1);
   const dieIfUnhealthy = (s) => (s.get('health') <= 0) ? flow(die, reset)(s) : s;
 
   const whenEntity = curry((condition, update, s) => {
@@ -85,6 +87,7 @@ export function reduce(state, { direction }) {
     whenEntity(canDie, ghostify),
     whenEntity(canBlock, moveBack),
     whenEntity(canKill, hurt),
+    whenEntity(canHeal, heal),
     dieIfUnhealthy
   )(state);
 
