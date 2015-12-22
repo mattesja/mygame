@@ -69,6 +69,9 @@
   &--wave::before       { content: "🌊"; }
   &--willows::before    { content: "🌾"; }
 
+  &--storesign--b,
+  &--storesign--u,
+  &--storesign--g,
   &--storesign--v,
   &--storesign--i,
   &--storesign--d,
@@ -82,6 +85,9 @@
     text-shadow: 1px 1px #fff, 2px 2px #333, 3px 3px #333;
   }
 
+  &--storesign--b::before { content: "B"; }
+  &--storesign--u::before { content: "U"; }
+  &--storesign--g::before { content: "G"; }
   &--storesign--v::before { content: "V"; }
   &--storesign--i::before { content: "I"; }
   &--storesign--d::before { content: "D"; }

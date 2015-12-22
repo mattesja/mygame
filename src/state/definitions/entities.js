@@ -75,6 +75,9 @@ export const entities = {
   CC: { type: 'musichall', canBlock },
   CD: { type: 'moai',      ...blocksUnless(hasHammer) },
   // The sign
+  ZI: { type: 'storesign--b', canBlock },
+  ZJ: { type: 'storesign--u', canBlock },
+  ZK: { type: 'storesign--g', canBlock },
   ZL: { type: 'storesign--v', canBlock },
   ZM: { type: 'storesign--i', canBlock },
   ZN: { type: 'storesign--d', canBlock },
