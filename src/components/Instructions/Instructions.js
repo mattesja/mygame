@@ -10,10 +10,11 @@ export default createPureComponent({
     render() {
         const { entity } = this.props;
 
+        const initialText = 'Befreie die Prinzessin vom bösen Zauberer aus der Burg. Wenn Du alle Edelsteine gesammelt hast, kann Du die Prinzessin freikaufen.';
+
         return (
             <div>
-            {JSON.stringify(entity)}
-
+            {entity && (entity.get('text') || ' ') || initialText}
             </div>
         );
     }

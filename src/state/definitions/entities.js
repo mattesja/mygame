@@ -28,11 +28,15 @@ const is = curry((prop, val, entity) => entity[prop] === val);
 
 export const typeIs = is('type');
 
+const blockText = 'Hier geht es nicht weiter.';
+const blockTextUnlessHammer = 'Hier geht es nicht weiter. Aber ein Hammer könnte Dir helfen.';
+const blockTextUnlessBoat = 'Hier geht es nicht weiter. Aber ein Boot könnte Dir helfen.';
+
 export const entities = {
-  '00': { type: 'empty' },
+  '00': { type: 'empty', text: '' },
   '01': { type: 'start' },
   // Special
-  SA: { type: 'tape', canCollect },
+  SA: { type: 'tape', canCollect, text: 'Toll! Du hast einen Edelstein gefunden.' },
   SB: { type: 'door', canWin, canDestroy: canWin, canBlock: not(canWin) },
   SC: { type: 'person' },
   SD: { type: 'invisible', canBlock },
@@ -44,7 +48,7 @@ export const entities = {
   PD: { type: 'boots',      canCollect },
   PE: { type: 'hammer',     canCollect },
   // Bounds
-  BA: { type: 'treeA',    canBlock },
+  BA: { type: 'treeA',    canBlock, text: blockText },
   BB: { type: 'treeB',    canBlock },
   BC: { type: 'building', canBlock },
   BD: { type: 'rabbit',   ...blocksUnless(hasHammer) },

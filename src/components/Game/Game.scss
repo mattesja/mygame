@@ -20,7 +20,7 @@
   }
 
   &__instructions {
-    font-size: 2.0rem;
+    font-size: 3.0rem;
     margin-top: 1em;
     // Interesting note here: the `line-height` must be `1em`
     // or another multiple that results in a number ending in
@@ -31,5 +31,7 @@
     // an effect on the alignment of child nodes of a sibling.
     line-height: 1em;
     text-align: justify;
+    height: 100px;
+    display:block;
   }
 }
