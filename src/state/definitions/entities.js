@@ -23,6 +23,8 @@ const blockText = 'Hier geht es nicht weiter.';
 const blockTextUnlessHammer = 'Hier geht es nicht weiter. Aber ein Hammer könnte Dir helfen.';
 const blockTextUnlessSpeedboat = 'Hier geht es nicht weiter. Aber ein Boot könnte Dir helfen.';
 const blockTextUnlessSilverware = 'Hier geht es nicht weiter. Aber ein Besteck könnte Dir helfen.';
+const blockTextUnlessBoots = 'Hier geht es nicht weiter. Aber die Stiefel könnten Dir helfen.';
+const canKillText = 'Aua! Das hat weh getan. Besser nicht mehr berühren.';
 
 const blocksUnless = (hasAbility) => ({
   canBlock: not(hasAbility),
@@ -40,8 +42,8 @@ function getBlockText(hasAbility) {
     else if (hasAbility === hasSpeedboat) {
         return blockTextUnlessSpeedboat;
     }
-    else if (hasAbility === hasSilverware) {
-        return blockTextUnlessSilverware;
+    else if (hasAbility === hasBoots) {
+        return blockTextUnlessBoots;
     }
 }
 
@@ -59,11 +61,11 @@ export const entities = {
   SD: { type: 'invisible', canBlock },
   SE: { type: 'ghost' },
   // Powerups
-  PA: { type: 'sunglasses', canCollect },
-  PB: { type: 'silverware', canCollect },
-  PC: { type: 'speedboat',  canCollect },
-  PD: { type: 'boots',      canCollect },
-  PE: { type: 'hammer',     canCollect },
+  PA: { type: 'sunglasses', canCollect, text: 'Toll! Du hast die Sonnenbrille gefunden.' },
+  PB: { type: 'silverware', canCollect, text: 'Toll! Du hast das Besteck gefunden.' },
+  PC: { type: 'speedboat',  canCollect, text: 'Toll! Du hast das Boot gefunden.' },
+  PD: { type: 'boots',      canCollect, text: 'Toll! Du hast die Stiefel gefunden.' },
+  PE: { type: 'hammer',     canCollect, text: 'Toll! Du hast den Hammer gefunden.' },
   // Bounds
   BA: { type: 'treeA',    canBlock, text: blockText },
   BB: { type: 'treeB',    canBlock, text: blockText },
@@ -108,25 +110,25 @@ export const entities = {
   ZR: { type: 'storesign--t', canBlock, text: blockText },
   ZS: { type: 'storesign--r', canBlock, text: blockText },
   // Killers without items
-  DA: { type: 'sun',     canHeal: not(hasSunglasses) },
+  DA: { type: 'sun',     canKill: not(hasSunglasses), text: 'Aua! Hier hilft eine Sonnenbrille.' },
   DB: { type: 'corn',    ...blocksUnless(hasSilverware) },
-  DC: { type: 'wave',    canBlock: not(hasSpeedboat) },
-  DD: { type: 'fire',    canKill: not(hasBoots), canDestroy: hasBoots },
-  DE: { type: 'snowman', canKill: not(hasHammer), canDie: hasHammer },
-  DF: { type: 'santa',   canKill: not(hasHammer), canDie: hasHammer },
-  DG: { type: 'shit',    canKill: not(hasBoots),  canDie: hasBoots },
+  DC: { type: 'wave',    ...blocksUnless(hasSpeedboat) },
+  DD: { type: 'fire',    canKill: not(hasBoots), canDestroy: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
+  DE: { type: 'snowman', canKill: not(hasHammer), canDie: hasHammer, text: 'Aua! Hier hilft der Hammer.' },
+  DF: { type: 'santa',   canKill: not(hasHammer), canDie: hasHammer, text: 'Aua! Hier hilft der Hammer.' },
+  DG: { type: 'shit',    canKill: not(hasBoots),  canDie: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
   // Killers always
-  KA: { type: 'bee',       canKill },
-  KB: { type: 'gator',     canKill },
-  KC: { type: 'snake',     canKill },
-  KD: { type: 'carA',      canKill },
-  KE: { type: 'carB',      canKill },
-  KF: { type: 'taxi',      canKill },
-  KG: { type: 'firetruck', canKill },
-  KH: { type: 'police',    canKill },
-  KI: { type: 'ambulance', canKill },
-  KJ: { type: 'cactus',    canKill },
-  KK: { type: 'tornado',   canKill },
+  KA: { type: 'bee',       canKill, text: canKillText},
+  KB: { type: 'gator',     canKill, text: canKillText},
+  KC: { type: 'snake',     canKill, text: canKillText},
+  KD: { type: 'carA',      canKill, text: canKillText},
+  KE: { type: 'carB',      canKill, text: canKillText},
+  KF: { type: 'taxi',      canKill, text: canKillText},
+  KG: { type: 'firetruck', canKill, text: canKillText},
+  KH: { type: 'police',    canKill, text: canKillText},
+  KI: { type: 'ambulance', canKill, text: canKillText},
+  KJ: { type: 'cactus',    canKill, text: canKillText},
+  KK: { type: 'tornado',   canKill, text: canKillText},
 };
 
 export const powerupTypes = [
