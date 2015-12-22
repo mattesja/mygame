@@ -19,18 +19,35 @@ const canKill = returnTrue;
 const canHeal = returnTrue;
 const canWin = (s) => s.get('numTapes') >= level.getNumTapesTotal(s);
 
+const blockText = 'Hier geht es nicht weiter.';
+const blockTextUnlessHammer = 'Hier geht es nicht weiter. Aber ein Hammer könnte Dir helfen.';
+const blockTextUnlessSpeedboat = 'Hier geht es nicht weiter. Aber ein Boot könnte Dir helfen.';
+const blockTextUnlessSilverware = 'Hier geht es nicht weiter. Aber ein Besteck könnte Dir helfen.';
+
 const blocksUnless = (hasAbility) => ({
   canBlock: not(hasAbility),
-  canDie: hasAbility
+  canDie: hasAbility,
+  text: getBlockText(hasAbility),
 });
+
+function getBlockText(hasAbility) {
+    if (hasAbility === hasHammer) {
+        return blockTextUnlessHammer;
+    }
+    else if (hasAbility === hasSilverware) {
+        return blockTextUnlessSilverware;
+    }
+    else if (hasAbility === hasSpeedboat) {
+        return blockTextUnlessSpeedboat;
+    }
+    else if (hasAbility === hasSilverware) {
+        return blockTextUnlessSilverware;
+    }
+}
 
 const is = curry((prop, val, entity) => entity[prop] === val);
 
 export const typeIs = is('type');
-
-const blockText = 'Hier geht es nicht weiter.';
-const blockTextUnlessHammer = 'Hier geht es nicht weiter. Aber ein Hammer könnte Dir helfen.';
-const blockTextUnlessBoat = 'Hier geht es nicht weiter. Aber ein Boot könnte Dir helfen.';
 
 export const entities = {
   '00': { type: 'empty', text: '' },
@@ -49,50 +66,50 @@ export const entities = {
   PE: { type: 'hammer',     canCollect },
   // Bounds
   BA: { type: 'treeA',    canBlock, text: blockText },
-  BB: { type: 'treeB',    canBlock },
-  BC: { type: 'building', canBlock },
+  BB: { type: 'treeB',    canBlock, text: blockText },
+  BC: { type: 'building', canBlock, text: blockText },
   BD: { type: 'rabbit',   ...blocksUnless(hasHammer) },
   BE: { type: 'chicken',  ...blocksUnless(hasHammer) },
   BF: { type: 'fishA',    ...blocksUnless(hasSpeedboat) },
   BG: { type: 'fishB',    ...blocksUnless(hasSpeedboat) },
   BH: { type: 'turtle',   ...blocksUnless(hasBoots) },
   BI: { type: 'camel',    ...blocksUnless(hasHammer) },
-  BJ: { type: 'cloud',    canBlock },
+  BJ: { type: 'cloud',    canBlock, text: blockText },
   BK: { type: 'creepsun', ...blocksUnless(hasHammer) },
-  BL: { type: 'palm',     canBlock },
+  BL: { type: 'palm',     canBlock, text: blockText },
   BM: { type: 'flowerA',  ...blocksUnless(hasBoots) },
   BN: { type: 'flowerB',  ...blocksUnless(hasBoots) },
   BO: { type: 'flowerC',  ...blocksUnless(hasBoots) },
-  BP: { type: 'treeC',    canBlock },
-  BQ: { type: 'leavesA',  canBlock },
-  BR: { type: 'leavesB',  canBlock },
-  BS: { type: 'leavesC',  canBlock },
-  BT: { type: 'willows',  canBlock },
+  BP: { type: 'treeC',    canBlock, text: blockText },
+  BQ: { type: 'leavesA',  canBlock, text: blockText },
+  BR: { type: 'leavesB',  canBlock, text: blockText },
+  BS: { type: 'leavesC',  canBlock, text: blockText },
+  BT: { type: 'willows',  canBlock, text: blockText },
   BU: { type: 'shell',    ...blocksUnless(hasBoots) },
-  BV: { type: 'snowflake', canBlock },
+  BV: { type: 'snowflake', canBlock, text: blockText },
   BW: { type: 'banana',    canDestroy: hasSilverware },
   BX: { type: 'monkey',    ...blocksUnless(hasHammer) },
   BY: { type: 'elephant',  ...blocksUnless(hasHammer) },
-  BZ: { type: 'houseA',    canBlock },
-  CA: { type: 'houseB',    canBlock },
-  CB: { type: 'mart',      canBlock },
-  CC: { type: 'musichall', canBlock },
+  BZ: { type: 'houseA',    canBlock, text: blockText },
+  CA: { type: 'houseB',    canBlock, text: blockText },
+  CB: { type: 'mart',      canBlock, text: blockText },
+  CC: { type: 'musichall', canBlock, text: blockText },
   CD: { type: 'moai',      ...blocksUnless(hasHammer) },
   // The sign
-  ZI: { type: 'storesign--b', canBlock },
-  ZJ: { type: 'storesign--u', canBlock },
-  ZK: { type: 'storesign--g', canBlock },
-  ZL: { type: 'storesign--v', canBlock },
-  ZM: { type: 'storesign--i', canBlock },
-  ZN: { type: 'storesign--d', canBlock },
-  ZO: { type: 'storesign--e', canBlock },
-  ZP: { type: 'storesign--o', canBlock },
-  ZQ: { type: 'storesign--s', canBlock },
-  ZR: { type: 'storesign--t', canBlock },
-  ZS: { type: 'storesign--r', canBlock },
+  ZI: { type: 'storesign--b', canBlock, text: blockText },
+  ZJ: { type: 'storesign--u', canBlock, text: blockText },
+  ZK: { type: 'storesign--g', canBlock, text: blockText },
+  ZL: { type: 'storesign--v', canBlock, text: blockText },
+  ZM: { type: 'storesign--i', canBlock, text: blockText },
+  ZN: { type: 'storesign--d', canBlock, text: blockText },
+  ZO: { type: 'storesign--e', canBlock, text: blockText },
+  ZP: { type: 'storesign--o', canBlock, text: blockText },
+  ZQ: { type: 'storesign--s', canBlock, text: blockText },
+  ZR: { type: 'storesign--t', canBlock, text: blockText },
+  ZS: { type: 'storesign--r', canBlock, text: blockText },
   // Killers without items
   DA: { type: 'sun',     canHeal: not(hasSunglasses) },
-  DB: { type: 'corn',    canBlock: not(hasSilverware), canDestroy: hasSilverware },
+  DB: { type: 'corn',    ...blocksUnless(hasSilverware) },
   DC: { type: 'wave',    canBlock: not(hasSpeedboat) },
   DD: { type: 'fire',    canKill: not(hasBoots), canDestroy: hasBoots },
   DE: { type: 'snowman', canKill: not(hasHammer), canDie: hasHammer },
