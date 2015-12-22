@@ -8,6 +8,7 @@ import Corngratulations from 'components/Corngratulations/Corngratulations';
 import HudContainer from 'components/Hud/HudContainer';
 import PlayerContainer from 'components/Player/PlayerContainer';
 import WorldContainer from 'components/World/WorldContainer';
+import InstructionsContainer from 'components/Instructions/InstructionsContainer';
 
 import 'components/Game/Game.scss';
 
@@ -39,12 +40,9 @@ export default createPureComponent({
         </Camera>
         <HudContainer />
         {corngrats}
-        <p className="game__instructions">
-          Collect all of your videotapes and return them to the video
-          store before time runs out, gathering items to help you on your
-          quest. Just as in real life, beware harmful things like bees,
-          snakes, and pieces of shit.
-        </p>
+          <p className="game__instructions">
+              <InstructionsContainer />
+          </p>
       </div>
     );
   }
