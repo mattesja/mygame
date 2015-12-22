@@ -98,7 +98,7 @@ export default createPureComponent({
         </div>
         <div className="hud__itemGroup">
           <div className="hud__item hud__item--health">
-            <div className="hud__label">Geld</div>
+            <div className="hud__label">Goldstücke</div>
             <div className="hud__content">
               {health}
             </div>

@@ -8,11 +8,13 @@ export default createPureComponent({
     displayName: 'Instructions',
 
     render() {
+        const { entity } = this.props;
 
         return (
-            <p>
-                bla
-            </p>
+            <div>
+            {JSON.stringify(entity)}
+
+            </div>
         );
     }
 

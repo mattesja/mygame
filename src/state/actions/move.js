@@ -61,6 +61,7 @@ export function reduce(state, { direction }) {
   const esOccupado = !!entity;
   const type = esOccupado && entity.get('type');
 
+  const setEntity         = (s) => s.set('entity', entity);
   const move           = (s) => player.setCoords(newCol, newRow, s);
   const moveBack       = (s) => player.setCoords(col, row, s);
   const orient         = (s) => player.setDirection(newDir, s);
@@ -79,6 +80,7 @@ export function reduce(state, { direction }) {
   });
 
   return flow(
+    setEntity,
     move,
     orient,
     whenEntity(canWin, win),

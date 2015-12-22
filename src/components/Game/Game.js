@@ -40,9 +40,9 @@ export default createPureComponent({
         </Camera>
         <HudContainer />
         {corngrats}
-          <p className="game__instructions">
+          <div className="game__instructions">
               <InstructionsContainer />
-          </p>
+          </div>
       </div>
     );
   }
