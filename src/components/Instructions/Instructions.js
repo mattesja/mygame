@@ -11,8 +11,7 @@ export default createPureComponent({
   },
 
   getQuiz(quiz) {
-    console.log("getQuiz " + quiz);
-    return quiz.question;
+    return quiz.get('question');
   },
 
   displayText(entity) {
