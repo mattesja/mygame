@@ -6,6 +6,7 @@ import * as pickTile from 'state/actions/pickTile';
 import * as placeTile from 'state/actions/placeTile';
 import * as updateTime from 'state/actions/updateTime';
 import * as quiz from 'state/actions/quiz';
+import * as command from 'state/actions/command';
 
 const reducers = {
   [changeLevel.type]: changeLevel.reduce,
@@ -14,6 +15,7 @@ const reducers = {
   [placeTile.type]: placeTile.reduce,
   [updateTime.type]: updateTime.reduce,
   [quiz.type]: quiz.reduce,
+  [command.type]: command.reduce,
 };
 
 export const supports = (type) => type in reducers;

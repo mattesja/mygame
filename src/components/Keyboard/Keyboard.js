@@ -12,6 +12,10 @@ export const keyCodes = Object.freeze({
   40: 'down'
 });
 
+export const commandKeyCodes = Object.freeze({
+  10: 'J'
+});
+
 const eventToProp = Object.freeze({
   keydown: 'onKeyDown',
   keyup: 'onKeyUp',
@@ -58,9 +62,13 @@ export default createPureComponent({
   },
 
   onKeyEvent(e) {
-    const handler = this.props[eventToProp[e.type]];
-    if (this.matchesAllFilters(e)) {
-      handler(this.getEventKey(e), e);
+    const handler = this.props[eventToProp[e.type]]; /// !!!
+    if (handler) {
+      if (this.matchesAllFilters(e)) {
+        handler(this.getEventKey(e), e);
+      }
+    } else {
+      // console.log("no handler found for " + e.type + " prop " + eventToProp[e.type]);
     }
   },
 

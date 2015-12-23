@@ -10,6 +10,7 @@ import level from 'state/models/level';
 
 import { toMove } from 'state/actions/move';
 import { solveQuiz } from 'state/actions/quiz';
+import { execCommand } from 'state/actions/command';
 
 import Player from 'components/Player/Player';
 
@@ -43,6 +44,9 @@ function mapDispatchToProps(dispatch) {
     },
     onSolve(key) {
       dispatch(solveQuiz(key));
+    },
+    command(key) {
+      dispatch(execCommand(key));
     }
   };
 };

@@ -8,9 +8,13 @@ import classNames from 'classnames';
 import { createPureComponent } from 'utils/createPureComponent';
 
 import Keyboard, { keyCodes } from 'components/Keyboard/Keyboard';
+import { commandKeyCodes } from 'components/Keyboard/Keyboard';
+
 import Tile from 'components/Tile/Tile';
 
 const arrowKeys = new Set(values(keyCodes));
+
+const commandKeys = new Set(values(commandKeyCodes));
 
 export default createPureComponent({
 
@@ -22,7 +26,8 @@ export default createPureComponent({
     row: PropTypes.number.isRequired,
     direction: PropTypes.string.isRequired,
     onMove: PropTypes.func.isRequired,
-    onSolve: PropTypes.func.isRequired
+    onSolve: PropTypes.func.isRequired,
+    command: PropTypes.func.isRequired
   },
 
   isNumberKey(key) {
@@ -33,8 +38,12 @@ export default createPureComponent({
     return arrowKeys.has(key);
   },
 
+  isCommandKey(key) {
+    return commandKeys.has(key);
+  },
+
   isRelevantKey(key) {
-      return this.isMoveKey(key) || this.isNumberKey(key);
+    return this.isMoveKey(key) || this.isNumberKey(key) || this.isCommandKey(key);
   },
 
   onKeyDown(key, e) {
@@ -45,6 +54,10 @@ export default createPureComponent({
     else if (this.isNumberKey(key)) {
       this.props.onSolve(key);
     }
+    else if (this.isCommandKey(key)) {
+      this.props.command(key);
+    }
+
   },
 
   render() {
