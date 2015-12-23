@@ -1,5 +1,10 @@
 export const type = 'SOLVE';
 
-export function solveQuiz(direction) {
-  return { type, direction };
+export function reduce(state, { key }) {
+  console.log(key);
+  return state;
+}
+
+export function solveQuiz(key) {
+  return { type, key };
 };

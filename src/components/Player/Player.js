@@ -21,16 +21,30 @@ export default createPureComponent({
     col: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
     direction: PropTypes.string.isRequired,
-    onMove: PropTypes.func.isRequired
+    onMove: PropTypes.func.isRequired,
+    onSolve: PropTypes.func.isRequired
+  },
+
+  isNumberKey(key) {
+    return !isNaN(key);
   },
 
   isMoveKey(key) {
     return arrowKeys.has(key);
   },
 
-  onArrowKeyDown(key, e) {
+  isRelevantKey(key) {
+      return this.isMoveKey(key) || this.isNumberKey(key);
+  },
+
+  onKeyDown(key, e) {
     e.preventDefault();
-    this.props.onMove(key);
+    if (this.isMoveKey(key)) {
+      this.props.onMove(key);
+    }
+    else if (this.isNumberKey(key)) {
+      this.props.onSolve(key);
+    }
   },
 
   render() {
@@ -46,8 +60,8 @@ export default createPureComponent({
     };
     return (
       <Keyboard
-        keyFilter={this.isMoveKey}
-        onKeyDown={this.onArrowKeyDown}
+        keyFilter={this.isRelevantKey}
+        onKeyDown={this.onKeyDown}
       >
         <Tile {...attrs} />
       </Keyboard>

@@ -9,6 +9,7 @@ import player from 'state/models/player';
 import level from 'state/models/level';
 
 import { toMove } from 'state/actions/move';
+import { solveQuiz } from 'state/actions/quiz';
 
 import Player from 'components/Player/Player';
 
@@ -39,6 +40,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onMove(direction) {
       dispatch(toMove(direction));
+    },
+    onSolve(key) {
+      dispatch(solveQuiz(key));
     }
   };
 };
