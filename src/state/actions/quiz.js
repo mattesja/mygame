@@ -1,7 +1,9 @@
+import flow from 'lodash/function/flow';
+
 export const type = 'SOLVE';
 
 export function reduce(state, { key }) {
-  console.log(key);
+  console.log("reduce" + Object.keys(state));
   return state;
 }
 
