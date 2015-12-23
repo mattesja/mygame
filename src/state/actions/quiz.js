@@ -60,7 +60,7 @@ export function askQuiz() {
     solution = secondNumber;
   } else if (solution > 9) {
     solution = Math.abs(firstNumber - secondNumber);
-    question = secondNumber + ' + ? = ' + firstNumber;
+    question = secondNumber + ' - ? = ' + firstNumber;
   }
 
   console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );

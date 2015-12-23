@@ -14,7 +14,7 @@ export default createPureComponent({
     return quiz.get('question');
   },
 
-  displayText(entity, message) {
+  displayText(entity, type, message) {
     if (!entity) {
       return 'Befreie die Prinzessin vom bösen Zauberer aus der Burg. Wenn Du alle Edelsteine gesammelt hast, kann Du die Prinzessin freikaufen. Im Haus des Zahlenmeisters kannst Du Geld für Werkzeuge verdienen.';
     }
@@ -23,7 +23,7 @@ export default createPureComponent({
     } else if (entity.get('type') === 'houseA') {
       return 'Löse die Aufgabe und Du bekommst ein Goldstück';
     }
-    else {
+    else if (type !== 'empty') {
       return entity.get('text') || ' ';
     }
 
@@ -36,11 +36,11 @@ export default createPureComponent({
   },
 
   render() {
-    const { entity, quiz, message } = this.props;
+    const { entity, type, quiz, message } = this.props;
 
     return (
         <div>
-            {this.displayText(entity, message)}
+            {this.displayText(entity, type, message)}
           <br/>
           <br/>
             {this.displayQuiz(entity, quiz)}
