@@ -18,6 +18,7 @@ export function executeCommand(state, key) {
   const entity = state.get('entity');
   const esOccupado = !!entity;
   const type = esOccupado && entity.get('type');
+  const health = state.get('health');
 
   if (entity && entity.get('isPowerup') && key === 'J') {
     console.log('execMaybe()');
@@ -29,7 +30,12 @@ export function executeCommand(state, key) {
     const addPowerup     = (s) => s.update('powerups', (ps) => ps.push(type));
     const pay           = (s) => s.update('health', (h) => h - 5);
 
-    return flow(removeEntity, addPowerup, pay)(state);
+    if (health > 5) {
+      return flow(removeEntity, addPowerup, pay)(state);
+    }
+    else {
+      return state.set('message', 'Nicht genügend Goldstücke!');
+    }
   }
   return state;
 }

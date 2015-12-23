@@ -9,6 +9,7 @@ function mapStateToProps(state) {
     return {
         entity: state.get('entity'),
         quiz: state.get('quiz'),
+        message: state.get('message'),
     };
 }
 
