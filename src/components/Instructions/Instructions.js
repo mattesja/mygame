@@ -19,7 +19,7 @@ export default createPureComponent({
       return 'Löse die Aufgabe und Du bekommst ein Goldstück';
     }
     else {
-      return entity && (entity.get('text') || ' ') || 'Befreie die Prinzessin vom bösen Zauberer aus der Burg. Wenn Du alle Edelsteine gesammelt hast, kann Du die Prinzessin freikaufen.';
+      return entity && (entity.get('text') || ' ') || 'Befreie die Prinzessin vom bösen Zauberer aus der Burg. Wenn Du alle Edelsteine gesammelt hast, kann Du die Prinzessin freikaufen. Im Haus des Zahlenmeisters kannst Du Geld für Werkzeuge verdienen.';
     }
 
   },

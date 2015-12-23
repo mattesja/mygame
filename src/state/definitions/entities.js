@@ -61,11 +61,11 @@ export const entities = {
   SD: { type: 'invisible', canBlock },
   SE: { type: 'ghost' },
   // Powerups
-  PA: { type: 'sunglasses', canCollect, text: 'Toll! Du hast die Sonnenbrille gefunden.' },
-  PB: { type: 'silverware', canCollect, text: 'Toll! Du hast das Besteck gefunden.' },
-  PC: { type: 'speedboat',  canCollect, text: 'Toll! Du hast das Boot gefunden.' },
-  PD: { type: 'boots',      canCollect, text: 'Toll! Du hast die Stiefel gefunden.' },
-  PE: { type: 'hammer',     canCollect, text: 'Toll! Du hast den Hammer gefunden.' },
+  PA: { type: 'sunglasses', text: 'Toll! Du hast die Sonnenbrille gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
+  PB: { type: 'silverware', text: 'Toll! Du hast das Besteck gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
+  PC: { type: 'speedboat',  text: 'Toll! Du hast das Boot gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
+  PD: { type: 'boots',      text: 'Toll! Du hast die Stiefel gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
+  PE: { type: 'hammer',     text: 'Toll! Du hast den Hammer gefunden. Möchtest Du diesen für 5 Goldstücke kaufen? Tippe J' },
   // Bounds
   BA: { type: 'treeA',    canBlock, text: blockText },
   BB: { type: 'treeB',    canBlock, text: blockText },
