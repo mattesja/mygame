@@ -1,5 +1,7 @@
 import Immutable from 'immutable';
 
+import { askQuiz } from 'state/actions/quiz';
+
 export const initialState = Immutable.fromJS({
   editor: {
     activeEntity: null,
@@ -13,6 +15,7 @@ export const initialState = Immutable.fromJS({
   powerups: [],
   health: 4,
   hasWon: false,
+  quiz: askQuiz,
   player: {
     // row: null,
     // col: null,

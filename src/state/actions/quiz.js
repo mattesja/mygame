@@ -10,3 +10,11 @@ export function reduce(state, { key }) {
 export function solveQuiz(key) {
   return { type, key };
 };
+
+export function askQuiz() {
+  console.log('askQuiz()');
+  return {
+    question: '1 + 2 = ?',
+    solution: 3
+  };
+}

@@ -8,13 +8,12 @@ export default createPureComponent({
   displayName: 'Instructions',
 
   propTypes: {
-    quizSolution: PropTypes.func.isRequired
   },
 
-    getQuiz() {
-      this.props.quizSolution(3);
-      return "1 + 2 = ?";
-    },
+  getQuiz(quiz) {
+    console.log("getQuiz " + quiz);
+    return quiz.question;
+  },
 
   displayText(entity) {
     if (entity && entity.get('type') === 'houseA') {
@@ -26,21 +25,21 @@ export default createPureComponent({
 
   },
 
-  displayQuiz(entity) {
+  displayQuiz(entity, quiz) {
     if (entity && entity.get('type') === 'houseA') {
-      return this.getQuiz();
+      return this.getQuiz(quiz);
     }
   },
 
   render() {
-    const { entity } = this.props;
+    const { entity, quiz } = this.props;
 
     return (
         <div>
             {this.displayText(entity)}
           <br/>
           <br/>
-            {this.displayQuiz(entity)}
+            {this.displayQuiz(entity, quiz)}
         </div>
     );
   }

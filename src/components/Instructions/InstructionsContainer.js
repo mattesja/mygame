@@ -5,19 +5,15 @@ import { connect } from 'react-redux';
 
 import Instructions from 'components/Instructions/Instructions';
 
-import { askQuiz } from 'state/actions/askQuiz';
-
 function mapStateToProps(state) {
     return {
         entity: state.get('entity'),
+        quiz: state.get('quiz'),
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-      quizSolution(solution) {
-        dispatch(askQuiz(solution));
-      }
     };
 };
 
