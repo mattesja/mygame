@@ -92,7 +92,7 @@ export const entities = {
   BW: { type: 'banana',    canDestroy: hasSilverware },
   BX: { type: 'monkey',    ...blocksUnless(hasHammer) },
   BY: { type: 'elephant',  ...blocksUnless(hasHammer) },
-  BZ: { type: 'houseA',    canBlock, text: blockText },
+  BZ: { type: 'houseA' },
   CA: { type: 'houseB',    canBlock, text: blockText },
   CB: { type: 'mart',      canBlock, text: blockText },
   CC: { type: 'musichall', canBlock, text: blockText },
