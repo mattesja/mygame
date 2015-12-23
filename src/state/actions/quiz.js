@@ -1,4 +1,5 @@
 import flow from 'lodash/function/flow';
+import { playSound } from 'utils/sound';
 
 export const type = 'SOLVE';
 
@@ -9,11 +10,13 @@ export function reduce(state, { key }) {
   if (entity && entity.get('type') === 'houseA')
     if (quiz && quiz.get('solution') === key) {
       console.log('solved');
-      state.update('health', (h) => h + 1);
+      playSound('oh');
+      return state.update('health', (h) => h + 1);
   }
   else {
       console.log('wrong');
-      state.update('health', (h) => h - 1);
+      playSound('hit-shriek');
+      return state.update('health', (h) => h - 1);
     }
   return state;
 }
