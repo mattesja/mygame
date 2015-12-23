@@ -48,7 +48,55 @@ function askQuizIn() {
 }
 
 
+
 export function askQuiz() {
+
+  const firstNumber = getRandom(10, 1);
+  const secondNumber = getRandom(10 - firstNumber, 2);
+  var solution = firstNumber + secondNumber;
+  var question = firstNumber + ' + ' + secondNumber + ' = ?';
+
+  if (secondNumber < 10) {
+    question = solution + ' - ' + firstNumber + ' = ?';
+    solution = secondNumber;
+  } else if (solution > 9) {
+    solution = Math.abs(firstNumber - secondNumber);
+    question = secondNumber + ' - ? = ' + firstNumber;
+  }
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + ''
+  };
+}
+
+export function askQuiz3() {
+
+  const firstNumber = getRandom(10, 5);
+  const secondNumber = getRandom(11 - firstNumber, 1);
+  var solution = firstNumber + secondNumber;
+  var question = firstNumber + ' + ' + secondNumber + ' = ?';
+
+  if (secondNumber < 10) {
+    question = solution + ' - ' + firstNumber + ' = ?';
+    solution = secondNumber;
+  } else if (solution > 9) {
+    solution = Math.abs(firstNumber - secondNumber);
+    question = secondNumber + ' - ? = ' + firstNumber;
+  }
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + ''
+  };
+}
+
+
+export function askQuiz2() {
 
   const firstNumber = getRandom(19, 5);
   const secondNumber = getRandom(20 - firstNumber, 1);
