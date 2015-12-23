@@ -1,5 +1,9 @@
 import flow from 'lodash/function/flow';
 import { playSound } from 'utils/sound';
+import Immutable from 'immutable';
+
+
+import buildModel from 'state/utils/buildModel';
 
 export const type = 'SOLVE';
 
@@ -29,12 +33,20 @@ function incrementHealth(state) {
 }
 
 function askNewQuiz(state) {
-  return state.setIn('quiz', askQuiz());
+  const newstate = state.update('quiz', (q) => askQuizIn());
+  console.log('new ' + newstate.get('quiz').get('solution'));
+  return newstate;
 }
 
 export function solveQuiz(key) {
   return { type, key };
 };
+
+function askQuizIn() {
+  const newQuiz = askQuiz();
+  return Immutable.fromJS(newQuiz);
+}
+
 
 export function askQuiz() {
 
@@ -42,8 +54,6 @@ export function askQuiz() {
   const secondNumber = getRandom(20 - firstNumber, 1);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
-
-  console.log('askQuiz()' + firstNumber + " " + secondNumber + " " + solution);
 
   if (secondNumber < 10) {
     question = solution + ' - ' + firstNumber + ' = ?';
