@@ -17,6 +17,7 @@ const canCollect = returnTrue;
 const canDestroy = returnTrue;
 const canKill = returnTrue;
 const canHeal = returnTrue;
+const isPowerup = returnTrue;
 const canWin = (s) => s.get('numTapes') >= level.getNumTapesTotal(s);
 
 const blockText = 'Hier geht es nicht weiter.';
@@ -61,11 +62,11 @@ export const entities = {
   SD: { type: 'invisible', canBlock },
   SE: { type: 'ghost' },
   // Powerups
-  PA: { type: 'sunglasses', text: 'Toll! Du hast die Sonnenbrille gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
-  PB: { type: 'silverware', text: 'Toll! Du hast das Besteck gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
-  PC: { type: 'speedboat',  text: 'Toll! Du hast das Boot gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
-  PD: { type: 'boots',      text: 'Toll! Du hast die Stiefel gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
-  PE: { type: 'hammer',     text: 'Toll! Du hast den Hammer gefunden. Möchtest Du diesen für 5 Goldstücke kaufen? Tippe J' },
+  PA: { type: 'sunglasses', isPowerup, text: 'Toll! Du hast die Sonnenbrille gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
+  PB: { type: 'silverware', isPowerup, text: 'Toll! Du hast das Besteck gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
+  PC: { type: 'speedboat',  isPowerup, text: 'Toll! Du hast das Boot gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
+  PD: { type: 'boots',      isPowerup, text: 'Toll! Du hast die Stiefel gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
+  PE: { type: 'hammer',     isPowerup, text: 'Toll! Du hast den Hammer gefunden. Möchtest Du diesen für 5 Goldstücke kaufen? Tippe J' },
   // Bounds
   BA: { type: 'treeA',    canBlock, text: blockText },
   BB: { type: 'treeB',    canBlock, text: blockText },
