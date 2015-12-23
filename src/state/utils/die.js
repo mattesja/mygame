@@ -1,5 +1,6 @@
 import flow from 'lodash/function/flow';
 
 export default function die(state) {
-  return state.set('deaths', state.get('deaths') + 1);
+    setTimeout(function() {window.location.reload(false)}, 10);
+    return state.set('deaths', state.get('deaths') + 1);
 };
