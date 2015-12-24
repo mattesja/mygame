@@ -46,7 +46,7 @@ export default createPureComponent({
     const { numDeaths, numTapesCollected, health, time } = this.props;
     if (numDeaths > prev.numDeaths) { playSound('bummer'); }
     if (numTapesCollected > prev.numTapesCollected) { playSound('oh'); }
-    if (health < prev.health && health === 3) { playSound('hit'); }
+    if (health === prev.health - 1 ) { playSound('hit'); }
     if (health < prev.health && health === 2) { playSound('hit-whimper'); }
     if (health < prev.health && health === 1) { playSound('hit-shriek'); }
     if (time <= 5) { playSound('tick-tock'); }
