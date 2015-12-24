@@ -11,6 +11,8 @@ function mapStateToProps(state) {
         type: state.get('type'),
         quiz: state.get('quiz'),
         message: state.get('message'),
+        message: state.get('message'),
+        state: state,
     };
 }
 
