@@ -52,7 +52,7 @@ function askQuizIn() {
 export function askQuiz() {
 
   const firstNumber = getRandom(10, 1);
-  const secondNumber = getRandom(10 - firstNumber, 2);
+  const secondNumber = getRandom(13 - firstNumber, 2);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
 
@@ -62,6 +62,9 @@ export function askQuiz() {
   } else if (solution > 9) {
     solution = Math.abs(firstNumber - secondNumber);
     question = secondNumber + ' - ? = ' + firstNumber;
+  }
+  if (solution > 9) {
+    return askQuiz();
   }
 
   console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );

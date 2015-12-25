@@ -30,7 +30,7 @@ export function executeCommand(state, key) {
     const addPowerup     = (s) => s.update('powerups', (ps) => ps.push(type));
     const pay           = (s) => s.update('health', (h) => h - 5);
 
-    if (health > 5) {
+    if (health >= 5) {
       return flow(removeEntity, addPowerup, pay)(state);
     }
     else {

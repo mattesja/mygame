@@ -130,6 +130,11 @@ export const entities = {
   KI: { type: 'ambulance', canKill, text: canKillText},
   KJ: { type: 'cactus',    canKill, text: canKillText},
   KK: { type: 'tornado',   canKill, text: canKillText},
+  // Cards
+  LA: { type: 'door2',    text: "Suche das Kamel in der Oase in der großen Wüste." },
+  LB: { type: 'camel2',    text: "Suche den Affen im Urwald der Schlange."},
+  LC: { type: 'monkey2',  text: "Suche den Schneeman am Nordpol."},
+  LD: { type: 'snowman2',  text: "Du findest die Prinzession auf der Elefanteninsel."},
 };
 
 export const powerupTypes = [
