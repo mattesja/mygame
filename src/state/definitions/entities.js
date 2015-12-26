@@ -59,7 +59,7 @@ export const entities = {
   SA: { type: 'tape', canCollect, text: 'Toll! Du hast einen Edelstein gefunden.' },
   SB: { type: 'door', canWin, canDestroy: canWin, canBlock: not(canWin) },
   SC: { type: 'person' },
-  SD: { type: 'invisible', canBlock },
+  SD: { type: 'invisible', canWin, canDestroy: canWin, canBlock: not(canWin) },
   SE: { type: 'ghost' },
   // Powerups
   PA: { type: 'sunglasses', isPowerup, text: 'Toll! Du hast die Sonnenbrille gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
@@ -131,10 +131,10 @@ export const entities = {
   KJ: { type: 'cactus',    canKill, text: canKillText},
   KK: { type: 'tornado',   canKill, text: canKillText},
   // Cards
-  LA: { type: 'door2',    text: "Suche das Kamel in der Oase in der großen Wüste." },
-  LB: { type: 'camel2',    text: "Suche den Affen im Urwald der Schlange."},
-  LC: { type: 'monkey2',  text: "Suche den Schneeman am Nordpol."},
-  LD: { type: 'snowman2',  text: "Du findest die Prinzession auf der Elefanteninsel."},
+  LA: { type: 'door2',    text: "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in der Oase in der großen Wüste." },
+  LB: { type: 'camel2',    text: "Der Zauberer sprach mit der bösen Hexe. Er sagt, dass er die Prinzessin im Urwald verstecken möchte. Suche den Affen im Urwald der Schlangen. Vielleicht kann er dir weiterhelfen."},
+  LC: { type: 'monkey2',  text: "Der Zauberer ist zum Nordpol aufgebrochen. Vielleicht kann Dir der Schneemann weiterhelfen. Suche den Schneeman am Nordpol."},
+  LD: { type: 'snowman2',  text: "Gestern habe ich mit dem Weihnachtsmann gesprochen. Er ist mit seinem Schlitten über den Wolken geflogen. Dort hat er die Prinzessin auf einer Wolke bei der Burg gesehen."},
 };
 
 export const powerupTypes = [
