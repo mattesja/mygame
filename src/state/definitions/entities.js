@@ -116,7 +116,7 @@ export const entities = {
   DC: { type: 'wave',    ...blocksUnless(hasSpeedboat) },
   DD: { type: 'fire',    canKill: not(hasBoots), canDestroy: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
   DE: { type: 'snowman', canKill: not(hasHammer), canDie: hasHammer, text: 'Aua! Hier hilft der Hammer.' },
-  DF: { type: 'santa',   canKill: not(hasHammer), canDie: hasHammer, text: 'Aua! Hier hilft der Hammer.' },
+  DF: { type: 'santa', text: 'Wenn Du die Prinzessin befreien möchtest, musst Du ein gefährliches Abenteuer bestehen. Die Prinzessin befindet sich im Urwald der Schlangen.' },
   DG: { type: 'shit',    canKill: not(hasBoots),  canDie: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
   // Killers always
   KA: { type: 'bee',       canKill, text: canKillText},
@@ -131,10 +131,10 @@ export const entities = {
   KJ: { type: 'cactus',    canKill, text: canKillText},
   KK: { type: 'tornado',   canKill, text: canKillText},
   // Cards
-  LA: { type: 'door2',    text: "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in der Oase in der großen Wüste." },
-  LB: { type: 'camel2',    text: "Der Zauberer sprach mit der bösen Hexe. Er sagt, dass er die Prinzessin im Urwald verstecken möchte. Suche den Affen im Urwald der Schlangen. Vielleicht kann er dir weiterhelfen."},
+  LA: { type: 'door2',    text: "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in den Kakteen in der Wüste." },
+  LB: { type: 'camel2',    text: "Der Zauberer sprach mit der bösen Hexe. Er sagt, dass er die Prinzessin auf einer Insel verstecken möchte. Suche den Affen auf der Insel im See. Vielleicht kann er dir weiterhelfen."},
   LC: { type: 'monkey2',  text: "Der Zauberer ist zum Nordpol aufgebrochen. Vielleicht kann Dir der Schneemann weiterhelfen. Suche den Schneeman am Nordpol."},
-  LD: { type: 'snowman2',  text: "Gestern habe ich mit dem Weihnachtsmann gesprochen. Er ist mit seinem Schlitten über den Wolken geflogen. Dort hat er die Prinzessin auf einer Wolke bei der Burg gesehen."},
+  LD: { type: 'snowman2',  text: "Gestern habe ich mit dem Weihnachtsmann gesprochen. Er ist mit seinem Schlitten schon durch die ganze Welt gereist. Er kann Dir bestimmt helfen."},
 };
 
 export const powerupTypes = [

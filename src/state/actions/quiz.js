@@ -52,7 +52,7 @@ function askQuizIn() {
 export function askQuiz() {
 
   const firstNumber = getRandom(10, 1);
-  const secondNumber = getRandom(14 - firstNumber, 2);
+  const secondNumber = getRandom(16 - firstNumber, 2);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
 

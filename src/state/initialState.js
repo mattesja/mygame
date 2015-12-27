@@ -13,6 +13,7 @@ export const initialState = Immutable.fromJS({
   deaths: 0,
   time: 30 * 60,
   powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
+  //powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
   health: 2,
   hasWon: false,
   quiz: askQuiz(),
