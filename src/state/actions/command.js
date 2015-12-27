@@ -37,6 +37,18 @@ export function executeCommand(state, key) {
       return state.set('message', 'Nicht genügend Goldstücke!');
     }
   }
+  if (entity && entity.get('type') && key === 'Z') {
+
+    const addTime = (s) => s.update('time', (t) => t + 60);
+    const pay           = (s) => s.update('health', (h) => h - 2);
+
+    if (health >= 2) {
+      return flow(addTime, pay)(state);
+    }
+    else {
+      return state.set('message', 'Nicht genügend Goldstücke!');
+    }
+  }
   return state;
 }
 
