@@ -37,7 +37,7 @@ export function executeCommand(state, key) {
       return state.set('message', 'Nicht genügend Goldstücke!');
     }
   }
-  if (entity && entity.get('type') && key === 'Z') {
+  if (entity && entity.get('type') == 'musichall' && key === 'Z') {
 
     const addTime = (s) => s.update('time', (t) => t + 60);
     const pay           = (s) => s.update('health', (h) => h - 2);
