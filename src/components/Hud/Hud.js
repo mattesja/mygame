@@ -49,7 +49,7 @@ export default createPureComponent({
     if (health === prev.health - 1 ) { playSound('hit'); }
     if (health < prev.health && health === 2) { playSound('hit-whimper'); }
     if (health < prev.health && health === 1) { playSound('hit-shriek'); }
-    if (time <= 5) { playSound('tick-tock'); }
+    if (time <= 60) { playSound('tick-tock'); }
   },
 
   renderPowerups(collected) {

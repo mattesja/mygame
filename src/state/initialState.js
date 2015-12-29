@@ -11,7 +11,7 @@ export const initialState = Immutable.fromJS({
   // level: null,
   numTapes: 0,
   deaths: 0,
-  time: 30 * 60,
+  time: 10 * 60,
   powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
   //powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
   health: 2,
