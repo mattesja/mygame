@@ -10,6 +10,7 @@ export const initialState = Immutable.fromJS({
   router: null,
   // level: null,
   numTapes: 0,
+  keybuffer: '',
   deaths: 0,
   time: 10 * 60,
   powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
