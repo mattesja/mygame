@@ -10,6 +10,8 @@ import player from 'state/models/player';
 import die from 'state/utils/die';
 import reset from 'state/utils/reset';
 
+import * as changeLevel from 'state/actions/changeLevel';
+
 import {
   canBlock,
   canCollect,
@@ -67,7 +69,7 @@ export function reduce(state, { direction }) {
   const move           = (s) => player.setCoords(newCol, newRow, s);
   const moveBack       = (s) => player.setCoords(col, row, s);
   const orient         = (s) => player.setDirection(newDir, s);
-  const win            = (s) => s.set('hasWon', true);
+  const win            = (s) => changeLevel.setNextLevel(s);
   const removeEntity   = (s) => level.setEntityPropAt(newCol, newRow, 'type', 'empty', s);
   const incrementTapes = (s) => s.update('numTapes', (num) => num + 1);
   const addPowerup     = (s) => s.update('powerups', (ps) => ps.push(type));

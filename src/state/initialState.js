@@ -8,14 +8,14 @@ export const initialState = Immutable.fromJS({
     activeGround: null,
   },
   router: null,
-  // level: null,
-  numTapes: 0,
+  gameLevel: 1,
+  numTapes: 20,
   keybuffer: '',
   deaths: 0,
   time: 10 * 60,
-  powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
-  //powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
-  health: 2,
+  //powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
+  powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
+  health: 200,
   hasWon: false,
   quiz: askQuiz(),
   player: {

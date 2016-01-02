@@ -10,6 +10,7 @@ import player from 'state/models/player';
 import level from 'state/models/level';
 
 import * as level1 from 'state/levels/level-01';
+import * as level2 from 'state/levels/level-02';
 
 import reset from 'state/utils/reset';
 
@@ -19,7 +20,8 @@ import {
 } from 'state/utils/parseLevel';
 
 const levels = Object.freeze([
-  level1
+  level1,
+  level2
 ]);
 
 const dataFor = curry((key, level) => {
@@ -37,6 +39,15 @@ export const type = 'CHANGE_LEVEL';
 export function reduce(state, action) {
   return setLevel(state, action.level);
 };
+
+export function setNextLevel(state) {
+  const incLevel = (s) => s.update('gameLevel', (l) => l + 1);
+  return flow(incLevel, setLevelByState)(state);
+}
+
+export function setLevelByState(state) {
+  return setLevel(state, state.get('gameLevel'));
+}
 
 export function setLevel(state, level) {
   return setLevelData(state, levels[level - 1])
