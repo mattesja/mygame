@@ -73,7 +73,7 @@ export function askQuiz() {
   const firstNumber = getRandom(9, 1);
   const secondNumber = 10;
   var solution = secondNumber - firstNumber;
-  var question = secondNumber + ' - ? = ' + firstNumber;
+  var question = firstNumber + ' + ? = ' + secondNumber;
 
   console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
 

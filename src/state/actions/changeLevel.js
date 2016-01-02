@@ -35,21 +35,28 @@ const groundsFor = dataFor('grounds');
 export const type = 'CHANGE_LEVEL';
 
 export function reduce(state, action) {
-  const levelData = levels[action.level - 1];
+  return setLevel(state, action.level);
+};
+
+export function setLevel(state, level) {
+  return setLevelData(state, levels[level - 1])
+}
+
+export function setLevelData(state, levelData) {
   const entities = parseEntities(entitiesFor(levelData));
   const grounds = parseGrounds(groundsFor(levelData));
   const flatEntities = flatten(entities);
   const numTapesTotal = flatEntities.filter(typeIs('tape')).length;
   const start = flatEntities.filter(typeIs('start'))[0];
   return flow(
-    player.setCoords(start.col, start.row),
-    level.setPlayerStart([start.col, start.row]),
-    level.setEntities(Immutable.fromJS(entities)),
-    level.setGrounds(Immutable.fromJS(grounds)),
-    level.setNumTapesTotal(numTapesTotal),
-    reset
+      player.setCoords(start.col, start.row),
+      level.setPlayerStart([start.col, start.row]),
+      level.setEntities(Immutable.fromJS(entities)),
+      level.setGrounds(Immutable.fromJS(grounds)),
+      level.setNumTapesTotal(numTapesTotal),
+      reset
   )(state);
-};
+}
 
 export function toChangeLevel(level) {
   return { type, level };

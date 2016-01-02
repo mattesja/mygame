@@ -1,6 +1,12 @@
 import flow from 'lodash/function/flow';
 
+  import { playSound } from 'utils/sound';
+
+import * as changeLevel from 'state/actions/changeLevel';
+
+
 export default function die(state) {
-    setTimeout(function() {window.location.reload(false)}, 10);
-    return state.set('deaths', state.get('deaths') + 1);
+  playSound('hit-shriek');
+  playSound('hit');
+  return changeLevel.setLevel(state, 1);
 };
