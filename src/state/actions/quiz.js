@@ -70,6 +70,21 @@ function askQuizIn() {
 
 export function askQuiz() {
 
+  const firstNumber = getRandom(9, 1);
+  const secondNumber = 10;
+  var solution = secondNumber - firstNumber;
+  var question = secondNumber + ' - ? = ' + firstNumber;
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + ''
+  };
+}
+
+export function askQuiz4() {
+
   const firstNumber = getRandom(12, 5);
   const secondNumber = getRandom(8, 4);
   var solution = firstNumber + secondNumber;
