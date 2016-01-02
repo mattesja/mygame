@@ -41,31 +41,29 @@ export function reduce(state, action) {
 };
 
 export function setNextLevel(state) {
-  const incLevel = (s) => s.update('gameLevel', (l) => l + 1);
-  return flow(incLevel, setLevelByState)(state);
-}
-
-export function setLevelByState(state) {
-  return setLevel(state, state.get('gameLevel'));
+  return setLevel(state, state.get('gameLevel') + 1);
 }
 
 export function setLevel(state, level) {
-  return setLevelData(state, levels[level - 1])
+  return setLevelData(state, levels[level - 1], level)
 }
 
-export function setLevelData(state, levelData) {
+export function setLevelData(state, levelData, gameLevel) {
   const entities = parseEntities(entitiesFor(levelData));
   const grounds = parseGrounds(groundsFor(levelData));
   const flatEntities = flatten(entities);
   const numTapesTotal = flatEntities.filter(typeIs('tape')).length;
   const start = flatEntities.filter(typeIs('start'))[0];
+  const setGameLevel = s => s.set('gameLevel', gameLevel);
   return flow(
       player.setCoords(start.col, start.row),
       level.setPlayerStart([start.col, start.row]),
       level.setEntities(Immutable.fromJS(entities)),
       level.setGrounds(Immutable.fromJS(grounds)),
       level.setNumTapesTotal(numTapesTotal),
-      reset
+      reset,
+      setGameLevel
+
   )(state);
 }
 
