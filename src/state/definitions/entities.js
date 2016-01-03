@@ -54,7 +54,7 @@ export const typeIs = is('type');
 
 export const entities = {
   '00': { type: 'empty', text: '' },
-  '01': { type: 'start' },
+  '01': { type: 'start', text: [  'Befreie die Prinzessin vom bösen Zauberer aus der Burg.', 'Leider hast Du die Prinzessin immer noch nicht gefunden. Dafür bist Du durch einen geheimen Tunnel in ein neues Land gekommen. Dabei hast Du alle Deine Werzeuge verloren. Sammle auch hier alle Edelsteine und gehe damit zur Burg.' ] },
   // Special
   SA: { type: 'tape', canCollect, text: 'Toll! Du hast einen Edelstein gefunden.' },
   SB: { type: 'door', canWin, canDestroy: canWin, canBlock: not(canWin) },
@@ -116,7 +116,7 @@ export const entities = {
   DC: { type: 'wave',    ...blocksUnless(hasSpeedboat) },
   DD: { type: 'fire',    canKill: not(hasBoots), canDestroy: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
   DE: { type: 'snowman', canKill: not(hasHammer), canDie: hasHammer, text: 'Aua! Hier hilft der Hammer.' },
-  DF: { type: 'santa', text: 'Wenn Du die Prinzessin befreien möchtest, musst Du ein gefährliches Abenteuer bestehen. Die Prinzessin befindet sich im Urwald der Schlangen.' },
+  DF: { type: 'santa', text: ['Wenn Du die Prinzessin befreien möchtest, musst Du ein gefährliches Abenteuer bestehen. Die Prinzessin befindet sich im Urwald der Schlangen.', 'Leider kann ich Dir nicht weiterhelfen. Versuche aber den Affen zu finden. Er soll auf einer einsamen Insel leben.'] },
   DG: { type: 'shit',    canKill: not(hasBoots),  canDie: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
   // Killers always
   KA: { type: 'bee',       canKill, text: canKillText},
@@ -131,10 +131,10 @@ export const entities = {
   KJ: { type: 'cactus',    canKill, text: canKillText},
   KK: { type: 'tornado',   canKill, text: canKillText},
   // Cards
-  LA: { type: 'door2',    text: "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in den Kakteen in der Wüste." },
-  LB: { type: 'camel2',    text: "Der Zauberer sprach mit der bösen Hexe. Er sagt, dass er die Prinzessin auf einer Insel verstecken möchte. Suche den Affen auf der Insel im See. Vielleicht kann er dir weiterhelfen."},
-  LC: { type: 'monkey2',  text: "Der Zauberer ist zum Nordpol aufgebrochen. Vielleicht kann Dir der Schneemann weiterhelfen. Suche den Schneeman am Nordpol."},
-  LD: { type: 'snowman2',  text: "Gestern habe ich mit dem Weihnachtsmann gesprochen. Er ist mit seinem Schlitten schon durch die ganze Welt gereist. Er kann Dir bestimmt helfen."},
+  LA: { type: 'door2',    text: [ "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in den Kakteen in der Wüste.", "Der Zauberer ist auf seinem Kamel forgeritten und mit seinem Boot zur Kakteeninsel gefahren. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel auf der Kakteeninsel." ] },
+  LB: { type: 'camel2',    text: ["Der Zauberer sprach mit der bösen Hexe. Er sagt, dass er die Prinzessin auf einer Insel verstecken möchte. Suche den Affen auf der Insel im See. Vielleicht kann er dir weiterhelfen.", "Leider ist der Zauberer weiter gefahren. Ich habe aber gehört, dass er zum Nordpol reisen möchte. Versuche den Weihnachtsmann zu finden. Er kann Dir vielleicht weiterhelfen."]},
+  LC: { type: 'monkey2',  text: ["Der Zauberer ist zum Nordpol aufgebrochen. Vielleicht kann Dir der Schneemann weiterhelfen. Suche den Schneeman am Nordpol.", "Ich habe den Zauberer leider nicht gesehen. Aber die Hexe hat mir gesagt, dass Sie im am Nordpol beim Schneemann treffen will."]},
+  LD: { type: 'snowman2',  text: ["Gestern habe ich mit dem Weihnachtsmann gesprochen. Er ist mit seinem Schlitten schon durch die ganze Welt gereist. Er kann Dir bestimmt helfen.", "Wenn Du die Prinzessin finden möchtest, musst Du die Weiten des Ozeans erkunden. Die Prinzessin wird irgendwo im Ozean von einem großen Fischschwarm gefangen gehalten."]},
 };
 
 export const powerupTypes = [
