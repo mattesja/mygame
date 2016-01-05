@@ -26,9 +26,9 @@ export function executeCommand(state, key) {
     const row = player.getRow(state);
     const col = player.getCol(state);
 
-    const removeEntity   = (s) => level.setEntityPropAt(col, row, 'type', 'empty', s);
-    const addPowerup     = (s) => s.update('powerups', (ps) => ps.push(type));
-    const pay           = (s) => s.update('health', (h) => h - 5);
+    const removeEntity = (s) => level.setEntityPropAt(col, row, 'type', 'empty', s);
+    const addPowerup = (s) => s.update('powerups', (ps) => ps.push(type));
+    const pay = (s) => s.update('health', (h) => h - 5);
 
     if (health >= 5) {
       return flow(removeEntity, addPowerup, pay)(state);
@@ -37,17 +37,22 @@ export function executeCommand(state, key) {
       return state.set('message', 'Nicht genügend Goldstücke!');
     }
   }
-  if (entity && entity.get('type') == 'musichall' && key === 'Z') {
+  if (entity && entity.get('type') == 'musichall') {
+    if (key === 'Z') {
 
-    const addTime = (s) => s.update('time', (t) => t + 60);
-    const pay           = (s) => s.update('health', (h) => h - 4);
+      const addTime = (s) => s.update('time', (t) => t + 60);
+      const pay = (s) => s.update('health', (h) => h - 4);
 
-    if (health >= 4) {
-      return flow(addTime, pay)(state);
+      if (health >= 4) {
+        return flow(addTime, pay)(state);
+      }
+      else {
+        return state.set('message', 'Nicht genügend Goldstücke!');
+      }
     }
-    else {
-      return state.set('message', 'Nicht genügend Goldstücke!');
-    }
+  }
+  if (key === 'S') { // stop time counter
+    return state.update('timeStopped', (ts) => !ts);
   }
   return state;
 }

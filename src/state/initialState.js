@@ -9,14 +9,15 @@ export const initialState = Immutable.fromJS({
   },
   router: null,
   gameLevel: 1,
-  numTapes: 20,
+  numTapes: 0,
   keybuffer: '',
   deaths: 0,
   time: 10 * 60,
-  //powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
-  powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
-  health: 200,
+  powerups: [], // 'speedboat', 'hammer', 'boots', 'sunglasses','silverware'
+  //powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
+  health: 2,
   hasWon: false,
+  timeStopped: false,
   quiz: askQuiz(),
   player: {
     // row: null,
