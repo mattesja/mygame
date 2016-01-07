@@ -6,15 +6,9 @@ import reset from 'state/utils/reset';
 export const type = 'UPDATE_TIME';
 
 export function reduce(state, action) {
-  const timeStopped = state.get('timeStopped');
-  if (timeStopped) { // time is stopped
-    const entity = state.get('entity');
-    if (entity && entity.get('type') == 'musichall') { // -> do not change time in house of watch maker
-      return state;
-    }
-    else { // reset flag in other positions
-      return state.set('timeStopped', false);
-    }
+  const entity = state.get('entity');
+  if (entity && (entity.get('type') == 'musichall' || entity.get('type') == 'houseA')) { // -> do not change time in house of watch maker
+    return state;
   }
 
   const newTime = Math.max(0, state.get('time') - 1);
