@@ -37,7 +37,8 @@ const groundsFor = dataFor('grounds');
 export const type = 'CHANGE_LEVEL';
 
 export function reduce(state, action) {
-  return setLevel(state, action.level);
+  var gameLevel = state.get('gameLevel');
+  return setLevel(state, gameLevel || action.level);
 };
 
 export function setNextLevel(state) {

@@ -8,5 +8,5 @@ import * as changeLevel from 'state/actions/changeLevel';
 export default function die(state) {
   playSound('hit-shriek');
   playSound('hit');
-  return changeLevel.setLevel(state, 1);
+  return changeLevel.setLevel(state, state.get('gameLevel'));
 };
