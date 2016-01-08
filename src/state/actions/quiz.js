@@ -89,9 +89,6 @@ export function askQuiz(quizLevel) {
   if (quizLevel === 'A') {
     return askQuiz_addition_pair();
   }
-  else if (quizLevel === 'A') {
-    return askQuiz_addition_10();
-  }
   else if (quizLevel === 'B') {
     return askQuiz_sum_10();
   }
@@ -103,6 +100,9 @@ export function askQuiz(quizLevel) {
   }
   else if (quizLevel === 'E') {
     return askQuiz_random_type();
+  }
+  else if (quizLevel === 'F') {
+    return askQuiz_addition_10();
   }
   return askQuiz_random_type();
 }
