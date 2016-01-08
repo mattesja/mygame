@@ -9,6 +9,8 @@ import player from 'state/models/player';
 
 export const type = 'COMMAND';
 
+export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E']);
+
 export function reduce(state, { key }) {
   return flow(executeCommand)(state, key);
 }
@@ -49,6 +51,12 @@ export function executeCommand(state, key) {
       else {
         return state.set('message', 'Nicht genügend Goldstücke!');
       }
+    }
+  }
+  if (entity && entity.get('type') == 'houseB') {
+    if (quizKeyCodes.has(key)) {
+      playSound('klick');
+      return state.set('quizLevel', key);
     }
   }
   if (key === 'S') { // stop time counter

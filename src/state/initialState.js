@@ -9,6 +9,7 @@ export const initialState = Immutable.fromJS({
   },
   router: null,
   gameLevel: 1,
+  quizLevel: 'A',
   numTapes: 0,
   keybuffer: '',
   deaths: 0,
