@@ -45,6 +45,10 @@ export default createPureComponent({
     return quiz.get('question');
   },
 
+  getQuiz2(quiz) {
+    return quiz.get('question2');
+  },
+
   displayText(entity, type, message, state) {
     if (!entity) {
       return getText(defaultText, state.get('gameLevel'));
@@ -66,6 +70,12 @@ export default createPureComponent({
     }
   },
 
+  displayQuiz2(entity, quiz) {
+    if (entity && entity.get('type') === 'houseA') {
+      return this.getQuiz2(quiz);
+    }
+  },
+
   render() {
     const { entity, type, quiz, message, state } = this.props;
 
@@ -74,7 +84,8 @@ export default createPureComponent({
             {this.displayText(entity, type, message, state)}
           <br/>
           <br/>
-            {this.displayQuiz(entity, quiz)}
+            {this.displayQuiz(entity, quiz)} <br/>
+            {this.displayQuiz2(entity, quiz)}
         </div>
     );
   }
