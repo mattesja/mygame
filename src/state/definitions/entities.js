@@ -95,7 +95,7 @@ export const entities = {
   BY: { type: 'elephant',  ...blocksUnless(hasHammer) },
   BZ: { type: 'houseA' },
   CA: { type: 'houseB' },
-  CB: { type: 'mart',      canBlock, text: blockText },
+  CB: { type: 'mart' },
   CC: { type: 'musichall', text: 'Das Haus des Uhrmachers. Für 4 Goldstücke wird dir eine Minute Zeit gegeben. Tippe Z' },
   CD: { type: 'moai',      ...blocksUnless(hasHammer) },
   // The sign

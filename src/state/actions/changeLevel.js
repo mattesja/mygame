@@ -11,6 +11,7 @@ import level from 'state/models/level';
 
 import * as level1 from 'state/levels/level-01';
 import * as level2 from 'state/levels/level-02';
+import * as level3 from 'state/levels/level-03';
 
 import reset from 'state/utils/reset';
 
@@ -20,6 +21,7 @@ import {
 } from 'state/utils/parseLevel';
 
 const levels = Object.freeze([
+  level3,
   level1,
   level2
 ]);
