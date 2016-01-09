@@ -185,7 +185,7 @@ export function askQuiz_random_type() {
 
 export function askQuiz_addition_pair() {
 
-  const firstNumber = getRandom(1, 10);
+  const firstNumber = getRandom(0, 10);
   const secondNumber = getRandom(1, 10 - firstNumber);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
