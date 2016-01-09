@@ -185,12 +185,22 @@ export function askQuiz_random_type() {
 
 export function askQuiz_addition_pair() {
 
+  const order = getRandom(0, 4);
   const firstNumber = getRandom(0, 10);
   const secondNumber = getRandom(1, 10 - firstNumber);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
   var question2 = '1' + firstNumber + ' + ' + secondNumber + ' = ?';
   var solution2 = solution + 10;
+
+  if (order >= 2) {
+    var solution3 = solution;
+    var question3 = question;
+    solution = solution2;
+    question = question2;
+    solution2 = solution3;
+    question2 = question3;
+  }
 
   console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
 
