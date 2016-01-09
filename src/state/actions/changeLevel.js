@@ -21,9 +21,9 @@ import {
 } from 'state/utils/parseLevel';
 
 const levels = Object.freeze([
-  level3,
   level1,
-  level2
+  level2,
+  level3
 ]);
 
 const dataFor = curry((key, level) => {
