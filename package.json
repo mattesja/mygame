@@ -6,7 +6,8 @@
   "scripts": {
     "build": "NODE_ENV=production webpack -p --devtool=source-map",
     "start": "babel-node server.js",
-    "test": "mocha --compilers js:babel-core/register --recursive"
+    "test": "rimraf .tmp/* && webpack --config webpack.test.config.js --target node && mocha .tmp/testBundle.js",
+    "testBrowser": "webpack-dev-server --config webpack.testBrowser.config.js --content-base public/"
   },
   "repository": {
     "type": "git",
@@ -44,12 +45,15 @@
     "css-loader": "^0.22.0",
     "express": "^4.13.3",
     "mocha": "^2.3.4",
+    "mocha-loader": "^0.7.1",
     "node-sass": "^3.4.1",
     "react-transform-hmr": "^1.0.1",
+    "rimraf": "^2.5.0",
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.3",
     "webpack-dev-middleware": "^1.2.0",
+    "webpack-dev-server": "^1.14.0",
     "webpack-hot-middleware": "^2.4.1"
   }
 }
