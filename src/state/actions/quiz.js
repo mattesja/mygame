@@ -20,7 +20,7 @@ export function answerQuiz(state, key) {
 
       if (quiz.get('question2')) {
         playSound('oh');
-        return flow(askQuiz2, resetKeybuffer)(state);
+        return flow(incrementHealth, askQuiz2, resetKeybuffer)(state);
       } else {
         playSound('sunglasses');
         return flow(incrementHealth, askNewQuiz, resetKeybuffer)(state);
@@ -86,14 +86,15 @@ function askQuizIn(quizLevel) {
 }
 
 export function askQuiz(quizLevel) {
+
   if (quizLevel === 'A') {
-    return askQuiz_addition_pair();
+    return askQuiz_addition_pair_minus();
   }
   else if (quizLevel === 'B') {
-    return askQuiz_sum_10();
+    return askQuiz_addition_pair();
   }
   else if (quizLevel === 'C') {
-    return askQuiz_addition_10();
+    return askQuiz_sum_100();
   }
   else if (quizLevel === 'D') {
     return askQuiz_minus_over_10();
@@ -104,7 +105,7 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'F') {
     return askQuiz_addition_10();
   }
-  return askQuiz_random_type();
+  return askQuiz_addition_pair_minus();
 }
 
 export function askQuiz_addition_10() {
@@ -211,6 +212,55 @@ export function askQuiz_addition_pair() {
     solution2: solution2 + ''
   };
 }
+
+export function askQuiz_addition_pair_minus() {
+
+  const order = getRandom(0, 4);
+  const firstNumber = getRandom(10, 20);
+  const secondNumber = getRandom(1, 10);
+  var solution = firstNumber - secondNumber;
+  var question = firstNumber + ' - ' + secondNumber + ' = ?';
+  var firstNumber2 = firstNumber + 10;
+  var question2 = firstNumber2 + ' - ' + secondNumber + ' = ?';
+  var solution2 = solution + 10;
+
+  if (order >= 2) {
+    var solution3 = solution;
+    var question3 = question;
+    solution = solution2;
+    question = question2;
+    solution2 = solution3;
+    question2 = question3;
+  }
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: question2,
+    solution2: solution2 + ''
+  };
+}
+
+
+export function askQuiz_sum_100() {
+
+  const firstNumber = getRandom(99, 1);
+  const secondNumber = 100;
+  var solution = secondNumber - firstNumber;
+  var question = firstNumber + ' + ? = ' + secondNumber;
+
+  console.log('askQuiz() ' + question + "==" + solution + " " + firstNumber + " " + secondNumber + " ");
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: undefined,
+    solution2: undefined
+  };
+}
+
 
 
 export function getRandom(maximum, minimum) {

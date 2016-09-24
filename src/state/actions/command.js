@@ -9,7 +9,7 @@ import player from 'state/models/player';
 
 export const type = 'COMMAND';
 
-export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E', 'F']);
+export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
 
 export function reduce(state, { key }) {
   return flow(executeCommand)(state, key);
