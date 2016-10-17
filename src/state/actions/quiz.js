@@ -188,10 +188,10 @@ export function askQuiz_addition_pair() {
 
   const order = getRandom(0, 4);
   const firstNumber = getRandom(0, 10);
-  const secondNumber = getRandom(1, 10 - firstNumber);
+  const secondNumber = getRandom(1, 90  - firstNumber);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
-  var question2 = '1' + firstNumber + ' + ' + secondNumber + ' = ?';
+  var question2 = firstNumber + ' + ' + (secondNumber + 10 ) + ' = ?';
   var solution2 = solution + 10;
 
   if (order >= 2) {
@@ -216,7 +216,7 @@ export function askQuiz_addition_pair() {
 export function askQuiz_addition_pair_minus() {
 
   const order = getRandom(0, 4);
-  const firstNumber = getRandom(10, 20);
+  const firstNumber = getRandom(10, 90);
   const secondNumber = getRandom(1, 10);
   var solution = firstNumber - secondNumber;
   var question = firstNumber + ' - ' + secondNumber + ' = ?';
