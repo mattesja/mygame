@@ -88,13 +88,13 @@ function askQuizIn(quizLevel) {
 export function askQuiz(quizLevel) {
 
   if (quizLevel === 'A') {
-    return askQuiz_addition_pair_minus();
+    return askQuiz_addition_pair_10();
   }
   else if (quizLevel === 'B') {
     return askQuiz_addition_pair();
   }
   else if (quizLevel === 'C') {
-    return askQuiz_sum_100();
+    return askQuiz_10er();
   }
   else if (quizLevel === 'D') {
     return askQuiz_minus_over_10();
@@ -103,9 +103,9 @@ export function askQuiz(quizLevel) {
     return askQuiz_random_type();
   }
   else if (quizLevel === 'F') {
-    return askQuiz_addition_10();
+    return askQuiz_addition_pair_minus();
   }
-  return askQuiz_addition_pair_minus();
+  return askQuiz_addition_pair_10();
 }
 
 export function askQuiz_addition_10() {
@@ -184,24 +184,57 @@ export function askQuiz_random_type() {
   };
 }
 
+export function askQuiz_10er() {
+
+  const firstNumber = getRandom(1, 9) * 10;
+  const secondNumber = getRandom(1, 9);
+  const complete = firstNumber + secondNumber;
+  var solution = 10 - secondNumber;
+  var question = complete + ' + ?  = ' + (firstNumber + 10);
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: undefined,
+    solution2: undefined
+  };
+}
+
 export function askQuiz_addition_pair() {
 
-  const order = getRandom(0, 4);
   const firstNumber = getRandom(0, 10);
-  const secondNumber = getRandom(1, 90  - firstNumber);
+  const secondNumber = getRandom(1, 10  - firstNumber);
+  const secondNumber2 = (getRandom(1, 9) * 10) + secondNumber;
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
-  var question2 = firstNumber + ' + ' + (secondNumber + 10 ) + ' = ?';
-  var solution2 = solution + 10;
+  var question2 = firstNumber + ' + ' + secondNumber2 + ' = ?';
+  var solution2 = firstNumber + secondNumber2;
 
-  if (order >= 2) {
-    var solution3 = solution;
-    var question3 = question;
-    solution = solution2;
-    question = question2;
-    solution2 = solution3;
-    question2 = question3;
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: question2,
+    solution2: solution2 + ''
+  };
+}
+
+export function askQuiz_addition_pair_10() {
+
+  const firstNumber = getRandom(0, 10);
+  var solution = getRandom(10, 19);
+  const secondNumber = solution - firstNumber;
+  if (secondNumber > 10) {
+    return askQuiz_addition_pair_10();
   }
+  var ten = getRandom(0, 3);
+  const secondNumber2 = (ten * 10) + secondNumber;
+  var question = firstNumber + ' + ' + secondNumber + ' = ?';
+  var question2 = firstNumber + ' + ' + secondNumber2 + ' = ?';
+  var solution2 = firstNumber + secondNumber2;
 
   console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
 
