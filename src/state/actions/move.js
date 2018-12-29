@@ -89,11 +89,11 @@ export function reduce(state, { direction }) {
     setType,
     move,
     orient,
+    whenEntity(canBlock, moveBack), // move back to original position, if target posistion is blocked by entity (e.g. tree)
     whenEntity(canWin, win),
     whenEntity(canDestroy, removeEntity),
     whenEntity(canCollect, flow(removeEntity, collect)),
     whenEntity(canDie, ghostify),
-    whenEntity(canBlock, moveBack),
     whenEntity(canKill, hurt),
     whenEntity(canHeal, heal),
     dieIfUnhealthy
