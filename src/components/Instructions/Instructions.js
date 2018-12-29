@@ -6,7 +6,8 @@ import {canKill} from 'state/definitions/abilities';
 const defaultText = [
   'Befreie die Prinzessin vom bösen Zauberer aus der Burg. Wenn Du alle Edelsteine gesammelt hast, kannst Du die Prinzessin freikaufen. Im Haus des Zahlenmeisters kannst Du Geld für Werkzeuge verdienen. Passe auf, dass Du schnell bist, sonst ist die Zeit abgelaufen. Im Haus des Uhrmachers kannst Du neue Zeit kaufen.',
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Dafür bist Du durch einen geheimen Tunnel in ein neues Land gekommen. Dabei hast Du alle Deine Werzeuge verloren. Sammle auch hier alle Edelsteine und gehe damit zur Burg.',
-  'Leider hast Du die Prinzessin immer noch nicht gefunden. Du hast Dich jetzt in eine Großstadt verirrt. Kanst Du die Prinzession hier finden?'
+  'Leider hast Du die Prinzessin immer noch nicht gefunden. Du hast Dich jetzt in eine Großstadt verirrt. Kanst Du die Prinzession hier finden?',
+  'Leider hast Du die Prinzessin immer noch nicht gefunden. Du befindest Dich jetzt in einem dichten Dschungel. Kanst Du die Prinzession hier finden?'
 ];
 
 function getText(text, gameLevel) {
