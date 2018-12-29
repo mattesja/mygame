@@ -105,7 +105,10 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'F') {
     return askQuiz_addition_10();
   }
-  return askQuiz_addition_pair_minus();
+  else if (quizLevel === 'V') {
+    return askQuiz_division();
+  }
+  return askQuiz_division();
 }
 
 export function askQuiz_addition_10() {
@@ -256,6 +259,21 @@ export function askQuiz_sum_100() {
   return {
     question: question,
     solution: solution + '',
+    question2: undefined,
+    solution2: undefined
+  };
+}
+
+export function askQuiz_division() {
+
+  const divisor = getRandom(9, 3);
+  const quotient = getRandom(2, 9) * 10;
+  const dividend = divisor * quotient;
+  var question = dividend + ' : ' + divisor + ' = ?';
+
+  return {
+    question: question,
+    solution: quotient + '',
     question2: undefined,
     solution2: undefined
   };
