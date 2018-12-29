@@ -10,6 +10,8 @@ const maintainedKeys = [
   'deaths',
   'level',
   'router',
+  'quizLevel',
+  'quiz'
 ];
 
 const maintain = curry((oldState, newState) => {
