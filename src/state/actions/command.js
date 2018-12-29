@@ -1,15 +1,13 @@
 import flow from 'lodash/function/flow';
 import { playSound } from 'utils/sound';
-import Immutable from 'immutable';
-
-import buildModel from 'state/utils/buildModel';
 
 import level from 'state/models/level';
 import player from 'state/models/player';
+import {askNewQuiz, resetKeybuffer} from 'state/actions/quiz';
 
 export const type = 'COMMAND';
 
-export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
+export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'V']);
 
 export function reduce(state, { key }) {
   return flow(executeCommand)(state, key);
@@ -56,7 +54,7 @@ export function executeCommand(state, key) {
   if (entity && entity.get('type') == 'houseB') {
     if (quizKeyCodes.has(key)) {
       playSound('klick');
-      return state.set('quizLevel', key);
+      return flow(state => state.set('quizLevel', key), askNewQuiz, resetKeybuffer)(state);
     }
   }
   if (key === 'S') { // stop time counter

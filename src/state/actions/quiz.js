@@ -52,7 +52,7 @@ function decrementHealth(state) {
   return state.update('health', (h) => h - 1);
 }
 
-function resetKeybuffer(state) {
+export function resetKeybuffer(state) {
   return state.set('keybuffer', '');
 }
 
@@ -65,7 +65,7 @@ function askQuiz2(state) {
   return state.set('quiz', newquiz);
 }
 
-function askNewQuiz(state) {
+export function askNewQuiz(state) {
   const quizLevel = state.get('quizLevel');
   const newQuiz = askQuizIn(quizLevel);
   if (newQuiz) {
