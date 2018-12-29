@@ -27,3 +27,8 @@ This is a hackathon game that was created in about 24 (non consecutive) hours, a
 [babel]:     https://babeljs.io/
 [webpack]:   https://webpack.github.io/
 [sass]:      http://sass-lang.com/
+
+# Deployment
+
+npm build
+copy index.html + static/bundle.js + assets/*.mp3 to target server
