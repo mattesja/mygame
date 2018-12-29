@@ -25,10 +25,10 @@ export default createPureComponent({
     return (
       <div className="corngratulations">
         <p className="corngratulations_message">
-          🌽gratulations.
+          🌽Herzlichen Glückwunsch!
         </p>
         <p className="corngratulations_message">
-          It was…a laugh riot.
+          Du hast die Prinzession befreit.
         </p>
       </div>
     );
