@@ -7,7 +7,7 @@ import {askNewQuiz, resetKeybuffer} from 'state/actions/quiz';
 
 export const type = 'COMMAND';
 
-export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'V']);
+export const quizKeyCodes = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'M', 'V']);
 
 export function reduce(state, { key }) {
   return flow(executeCommand)(state, key);

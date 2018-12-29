@@ -22,7 +22,8 @@ export const commandKeyCodes = Object.freeze({
   24: 'D',
   25: 'E',
   26: 'F',
-  27: 'V'
+  27: 'M',
+  28: 'V'
 });
 
 const eventToProp = Object.freeze({
