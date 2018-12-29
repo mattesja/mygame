@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/stevenhauser/i-have-to-return-some-videotapes/issues"
   },
-  "homepage": "https://github.com/stevenhauser/i-have-to-return-some-videotapes#readme",
+  "homepage": "/math",
   "dependencies": {
     "assert": "^1.3.0",
     "classnames": "^2.2.0",
