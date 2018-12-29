@@ -1,8 +1,7 @@
-import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import React, {PropTypes} from 'react';
 
-import { createPureComponent } from 'utils/createPureComponent';
-import { canKill } from 'state/definitions/abilities';
+import {createPureComponent} from 'utils/createPureComponent';
+import {canKill} from 'state/definitions/abilities';
 
 const defaultText = [
   'Befreie die Prinzessin vom bösen Zauberer aus der Burg. Wenn Du alle Edelsteine gesammelt hast, kannst Du die Prinzessin freikaufen. Im Haus des Zahlenmeisters kannst Du Geld für Werkzeuge verdienen. Passe auf, dass Du schnell bist, sonst ist die Zeit abgelaufen. Im Haus des Uhrmachers kannst Du neue Zeit kaufen.',
@@ -65,13 +64,18 @@ export default createPureComponent({
 
   },
 
-  displayQuiz(entity, quiz) {
+  displayQuiz(entity, quiz, state) {
     if (entity && entity.get('type') === 'houseA') {
-      return this.getQuiz(quiz);
+      let quizText = this.getQuiz(quiz);
+      let keybuffer = state.get('keybuffer');
+      if (keybuffer) {
+        quizText = quizText.replace("?", keybuffer + "?");
+      }
+      return quizText;
     }
   },
 
-  displayQuiz2(entity, quiz) {
+  displayQuiz2(entity, quiz, state) {
     if (entity && entity.get('type') === 'houseA') {
       return this.getQuiz2(quiz);
     }
@@ -85,8 +89,8 @@ export default createPureComponent({
             {this.displayText(entity, type, message, state)}
           <br/>
           <br/>
-            {this.displayQuiz(entity, quiz)} <br/>
-            {this.displayQuiz2(entity, quiz)}
+            {this.displayQuiz(entity, quiz, state)} <br/>
+            {this.displayQuiz2(entity, quiz, state)}
         </div>
     );
   }
