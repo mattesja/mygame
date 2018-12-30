@@ -73,7 +73,7 @@ export function reduce(state, { direction }) {
   const removeEntity   = (s) => level.setEntityPropAt(newCol, newRow, 'type', 'empty', s);
   const incrementTapes = (s) => s.update('numTapes', (num) => num + 1);
   const addPowerup     = (s) => s.update('powerups', (ps) => ps.push(type));
-  const ghostify       = (s) => level.setEntityPropAt(newCol, newRow, 'type', (type === 'wave' ? type : 'empty'), s);
+  const ghostify       = (s) => level.setEntityPropAt(newCol, newRow, 'type', (type === 'wave' || type === 'doorsimple' ? type : 'empty'), s);
   const collect        = (s) => (type === 'tape') ? incrementTapes(s) : s;
   const hurt           = (s) => s.update('health', (h) => h - 1);
   const heal         = (s) => s.update('health', (h) => h + 1);
