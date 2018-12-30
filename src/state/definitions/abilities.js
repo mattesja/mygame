@@ -28,3 +28,4 @@ export const hasHammer = hasPowerup('hammer');
 export const hasSilverware = hasPowerup('silverware');
 export const hasSpeedboat = hasPowerup('speedboat');
 export const hasSunglasses = hasPowerup('sunglasses');
+export const hasKey = hasPowerup('key');

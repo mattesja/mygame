@@ -9,6 +9,7 @@ import {
   hasSilverware,
   hasSpeedboat,
   hasSunglasses,
+  hasKey,
   returnTrue
 } from 'state/definitions/abilities';
 
@@ -25,6 +26,7 @@ const blockTextUnlessHammer = 'Hier geht es nicht weiter. Aber ein Hammer könnt
 const blockTextUnlessSpeedboat = 'Hier geht es nicht weiter. Aber ein Boot könnte Dir helfen.';
 const blockTextUnlessSilverware = 'Hier geht es nicht weiter. Aber ein Besteck könnte Dir helfen.';
 const blockTextUnlessBoots = 'Hier geht es nicht weiter. Aber die Stiefel könnten Dir helfen.';
+const blockTextUnlessKey = 'Hier geht es nicht weiter. Aber der Schlüssel wird Dir helfen.';
 const canKillText = 'Aua! Das hat weh getan. Besser nicht mehr berühren.';
 
 const blocksUnless = (hasAbility) => ({
@@ -46,6 +48,9 @@ function getBlockText(hasAbility) {
     else if (hasAbility === hasBoots) {
         return blockTextUnlessBoots;
     }
+    else if (hasAbility === hasKey) {
+        return blockTextUnlessKey;
+    }
 }
 
 const is = curry((prop, val, entity) => entity[prop] === val);
@@ -60,13 +65,13 @@ export const entities = {
   SB: { type: 'door', canWin, canDestroy: canWin, canBlock: not(canWin) },
   SC: { type: 'person' },
   SD: { type: 'invisible', canWin, canDestroy: canWin, canBlock: not(canWin) },
-  SE: { type: 'ghost',     canKill, text: canKillText},
   // Powerups
   PA: { type: 'sunglasses', isPowerup, text: 'Toll! Du hast die Sonnenbrille gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
   PB: { type: 'silverware', isPowerup, text: 'Toll! Du hast das Besteck gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
   PC: { type: 'speedboat',  isPowerup, text: 'Toll! Du hast das Boot gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
   PD: { type: 'boots',      isPowerup, text: 'Toll! Du hast die Stiefel gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
   PE: { type: 'hammer',     isPowerup, text: 'Toll! Du hast den Hammer gefunden. Möchtest Du diesen für 5 Goldstücke kaufen? Tippe J' },
+  PF: { type: 'key',        isPowerup, text: 'Toll! Du hast den Schlüssel gefunden. Möchtest Du diesen für 5 Goldstücke kaufen? Tippe J' },
   // Bounds
   BA: { type: 'treeA',    canBlock, text: blockText },
   BB: { type: 'treeB',    canBlock, text: blockText },
@@ -98,6 +103,8 @@ export const entities = {
   CB: { type: 'mart' },
   CC: { type: 'musichall', text: 'Das Haus des Uhrmachers. Für 4 Goldstücke wird dir eine Minute Zeit gegeben. Tippe Z' },
   CD: { type: 'moai',      ...blocksUnless(hasHammer) },
+  CE: { type: 'shield', text: ''},
+  CF: { type: 'chain', canBlock, text: ''},
   // The sign
   ZI: { type: 'storesign--b', canBlock, text: blockText },
   ZJ: { type: 'storesign--u', canBlock, text: blockText },
@@ -119,6 +126,8 @@ export const entities = {
   DF: { type: 'santa', text: ['Wenn Du die Prinzessin befreien möchtest, musst Du ein gefährliches Abenteuer bestehen. Die Prinzessin befindet sich im Urwald der Schlangen.', 'Leider kann ich Dir nicht weiterhelfen. Versuche aber den Affen zu finden. Er soll auf einer einsamen Insel leben.'] },
   DG: { type: 'shit',    canKill: not(hasBoots),  canDie: hasBoots, text: 'Aua! Hier helfen die Stiefel.'  },
   // Killers always
+  SE: { type: 'ghost',     canKill, text: canKillText},
+
   KA: { type: 'bee',       canKill, text: canKillText},
   KB: { type: 'gator',     canKill, text: canKillText},
   KC: { type: 'snake',     canKill, text: canKillText},
@@ -130,10 +139,9 @@ export const entities = {
   KI: { type: 'ambulance', canKill, text: canKillText},
   KJ: { type: 'cactus',    canKill, text: canKillText},
   KK: { type: 'tornado',   canKill, text: canKillText},
-  KL: { type: 'doorsimple', text: ''},
+  KL: { type: 'doorsimple', ...blocksUnless(hasKey) },
   KM: { type: 'dagger', canKill, text: canKillText},
-  KN: { type: 'shield', text: ''},
-  KO: { type: 'chain', canBlock, text: ''},
+
   // Cards
   LA: { type: 'door2',    text: [
       "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in den Kakteen in der Wüste.",
@@ -149,6 +157,7 @@ export const entities = {
   LD: { type: 'snowman2',  text: ["Gestern habe ich mit dem Weihnachtsmann gesprochen. Er ist mit seinem Schlitten schon durch die ganze Welt gereist. Er kann Dir bestimmt helfen.",
       "Wenn Du die Prinzessin finden möchtest, musst Du die Weiten des Ozeans erkunden. Die Prinzessin wird irgendwo im Ozean von einem großen Fischschwarm gefangen gehalten.",
       "", ""]},
+  LE: { type: 'king',  text: ["", "", "", "", "Meine Burg ist verhext worden und ich bin Gefanger auf meiner eigenen Burg. Ich habe gehört, dass die Prinzessin im Verlies gefangen gehalten wird."]},
 };
 
 export const powerupTypes = [

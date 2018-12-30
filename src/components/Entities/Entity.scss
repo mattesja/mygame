@@ -75,7 +75,10 @@
   &--willows::before    { content: "🌾"; }
   &--dagger::before     { content: "🗡"; }
   &--shield::before     { content: "🛡"; }
-  &--chain::before     { content: "⛓"; }
+  &--chain::before      { content: "⛓"; }
+  &--crown::before      { content: "👑"; }
+  &--king::before       { content: "🤴"; }
+  &--key::before        { content: "🗝️"; }
 
   &--storesign--b,
   &--storesign--u,

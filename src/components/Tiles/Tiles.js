@@ -15,16 +15,19 @@ const TilesRow = createPureComponent({
 
   renderTile(tile) {
     const { block } = this.props;
-    const { type, row, col } = tile;
-    return !tile ? null : (
-      <Tile
-        key={`${type}-${row}-${col}`}
-        block={block}
-        col={col}
-        row={row}
-        type={type}
-      />
-    );
+    if (tile !== null) {
+      const {type, row, col} = tile;
+
+      return (
+          <Tile
+              key={`${type}-${row}-${col}`}
+              block={block}
+              col={col}
+              row={row}
+              type={type}
+          />
+      );
+    }
   },
 
   render() {
