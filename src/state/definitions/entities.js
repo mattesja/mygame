@@ -165,5 +165,7 @@ export const powerupTypes = [
   entities.PB.type,
   entities.PC.type,
   entities.PD.type,
-  entities.PE.type
+  entities.PE.type,
+  entities.PF.type
+
 ];

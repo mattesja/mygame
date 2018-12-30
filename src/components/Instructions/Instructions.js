@@ -8,7 +8,7 @@ const defaultText = [
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Dafür bist Du durch einen geheimen Tunnel in ein neues Land gekommen. Dabei hast Du alle Deine Werzeuge verloren. Sammle auch hier alle Edelsteine und gehe damit zur Burg.',
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Du hast Dich jetzt in eine Großstadt verirrt. Kannst Du die Prinzession hier finden?',
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Du befindest Dich jetzt in einem dichten Dschungel. Kannst Du die Prinzession hier finden?',
-  'Leider hast Du die Prinzessin immer noch nicht gefunden. Du befindest Dich jetzt in der Burg des büsen Zauberer. Du musst die Prinzession aus dem Verlies befreien.'
+  'Leider hast Du die Prinzessin immer noch nicht gefunden. Du befindest Dich jetzt einer Burg. Suche den König. Er wird Dir weiterhelfen.'
 ];
 
 function getText(text, gameLevel) {
