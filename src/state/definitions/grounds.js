@@ -12,4 +12,6 @@ export const grounds = {
   GK: { type: 'snow' },
   GL: { type: 'carpet' },
   GM: { type: 'wood' },
+  GN: { type: 'stone' },
+  GO: { type: 'darkstone' },
 };

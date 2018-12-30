@@ -13,7 +13,7 @@
   &--building::before   { content: "🏢"; }
   &--cactus::before     { content: "🌵"; }
   &--camel::before      { content: "🐫"; }
-  &--camel2::before      { content: "🐫"; }
+  &--camel2::before     { content: "🐫"; }
   &--carA::before       { content: "🚗"; }
   &--carB::before       { content: "🚙"; }
   &--chicken::before    { content: "🐣"; }
@@ -23,7 +23,8 @@
   &--creepsun::before   { content: "🌞"; }
   &--dancer::before     { content: "💃"; }
   &--door::before       { content: "🚪"; }
-  &--door2::before       { content: "🚪"; }
+  &--door2::before      { content: "🚪"; }
+  &--doorsimple::before { content: "🚪"; }
   &--elephant::before   { content: "🐘"; }
   &--fire::before       { content: "🔥"; }
   &--firetruck::before  { content: "🚒"; }
@@ -72,6 +73,9 @@
   &--turtle::before     { content: "🐢"; }
   &--wave::before       { content: "🌊"; }
   &--willows::before    { content: "🌾"; }
+  &--dagger::before     { content: "🗡"; }
+  &--shield::before     { content: "🛡"; }
+  &--chain::before     { content: "⛓"; }
 
   &--storesign--b,
   &--storesign--u,

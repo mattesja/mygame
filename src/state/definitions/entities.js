@@ -60,7 +60,7 @@ export const entities = {
   SB: { type: 'door', canWin, canDestroy: canWin, canBlock: not(canWin) },
   SC: { type: 'person' },
   SD: { type: 'invisible', canWin, canDestroy: canWin, canBlock: not(canWin) },
-  SE: { type: 'ghost' },
+  SE: { type: 'ghost',     canKill, text: canKillText},
   // Powerups
   PA: { type: 'sunglasses', isPowerup, text: 'Toll! Du hast die Sonnenbrille gefunden. Möchtest Du diese für 5 Goldstücke kaufen? Tippe J' },
   PB: { type: 'silverware', isPowerup, text: 'Toll! Du hast das Besteck gefunden. Möchtest Du dieses für 5 Goldstücke kaufen? Tippe J' },
@@ -130,6 +130,10 @@ export const entities = {
   KI: { type: 'ambulance', canKill, text: canKillText},
   KJ: { type: 'cactus',    canKill, text: canKillText},
   KK: { type: 'tornado',   canKill, text: canKillText},
+  KL: { type: 'doorsimple', text: ''},
+  KM: { type: 'dagger', canKill, text: canKillText},
+  KN: { type: 'shield', text: ''},
+  KO: { type: 'chain', canBlock, text: ''},
   // Cards
   LA: { type: 'door2',    text: [
       "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in den Kakteen in der Wüste.",

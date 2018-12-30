@@ -13,6 +13,16 @@
   &--carpet   { background-color: #990000; }
   &--wood     { background-color: #5e240f; }
 
+  &--darkstone {
+    background-color: #595959;
+    border: 1px solid #000000;
+  }
+
+  &--stone {
+    background-color: #8f8f8f;
+    border: 1px solid #565656;
+  }
+
   &--sidewalk {
     background-color: #d8d8d8;
     border: 1px solid #c6c6c6;
