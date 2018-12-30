@@ -10,4 +10,6 @@ export const grounds = {
   GI: { type: 'roadline' },
   GJ: { type: 'doorway' },
   GK: { type: 'snow' },
+  GL: { type: 'carpet' },
+  GM: { type: 'wood' },
 };
