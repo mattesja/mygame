@@ -147,7 +147,7 @@ export const entities = {
       "Der böse Zauberer ist vor wenigen Tagen auf seinem Kamel mit der Prinzessin fortgeritten. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel in den Kakteen in der Wüste.",
       "Der Zauberer ist auf seinem Kamel forgeritten und mit seinem Boot zur Kakteeninsel gefahren. Vielleicht kann Dir das Kamel weiterhelfen. Suche das Kamel auf der Kakteeninsel.",
       "Die Prinzessin ist im Schlangengehege versteckt.",
-      "Die Prinzessin wird tief im Schlangelwald gefangen gehalten." ] },
+      "Die Prinzessin wird tief im Schlangenwald gefangen gehalten." ] },
   LB: { type: 'camel2',    text: ["Der Zauberer sprach mit der bösen Hexe. Er sagt, dass er die Prinzessin auf einer Insel verstecken möchte. Suche den Affen auf der Insel im See. Vielleicht kann er dir weiterhelfen.",
       "Leider ist der Zauberer weiter gefahren. Ich habe aber gehört, dass er zum Nordpol reisen möchte. Versuche den Weihnachtsmann zu finden. Er kann Dir vielleicht weiterhelfen.",
       "", ""]},
