@@ -111,6 +111,9 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'V') {
     return askQuiz_division();
   }
+  else if (quizLevel === 'Q') {
+    return askQuiz_cheat();
+  }
   return askQuiz_division();
 }
 
@@ -283,7 +286,7 @@ export function askQuiz_division() {
 }
 export function askQuiz_multiplication() {
 
-  const factor1 = getRandom(9, 3);
+  const factor1 = getRandom(9, 5);
   const factor2 = getRandom(2, 9);
   const product = factor1 * factor2;
   var question = factor1 + ' • ' + factor2 + ' = ?';
@@ -291,6 +294,22 @@ export function askQuiz_multiplication() {
   return {
     question: question,
     solution: product + '',
+    question2: undefined,
+    solution2: undefined
+  };
+}
+export function askQuiz_cheat() {
+
+  const firstNumber = 1;
+  const secondNumber = 0;
+  var solution = 1;
+  var question = '1 + 0 = ?';
+
+  console.log('askQuiz() ' + question + "==" + solution + " " + firstNumber + " " + secondNumber + " ");
+
+  return {
+    question: question,
+    solution: solution + '',
     question2: undefined,
     solution2: undefined
   };
