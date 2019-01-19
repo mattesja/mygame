@@ -29,7 +29,7 @@ export function answerQuiz(state, key) {
     else if (quiz) {
       var solution = quiz.get('solution');
       var keybuffer = state.get('keybuffer');
-      if (solution.length > keybuffer.length + 1 && solution.lastIndexOf(key, 0) === 0) { // only relevant for solutions with multiple digits
+      if (solution.length > keybuffer.length + 1 && solution[keybuffer.length]===key) { // only relevant for solutions with multiple digits
         console.log('partial key ' + key + ' solution ' + solution + ' keybuffer ' + keybuffer);
         playSound('klick');
         return state.update('keybuffer', (k) => k + key);
@@ -273,7 +273,8 @@ export function askQuiz_sum_100() {
 export function askQuiz_division() {
 
   const divisor = getRandom(9, 3);
-  const quotient = getRandom(2, 9) * 10;
+  const potenz = getRandom(0,3);
+  const quotient = getRandom(2, 9) * Math.pow(10, potenz);
   const dividend = divisor * quotient;
   var question = dividend + ' : ' + divisor + ' = ?';
 
