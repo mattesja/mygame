@@ -231,8 +231,8 @@ export function askQuiz_addition_pair() {
 export function askQuiz_addition_pair_minus() {
 
   const order = getRandom(0, 4);
-  const firstNumber = getRandom(10, 90);
-  const secondNumber = getRandom(1, 10);
+  const secondNumber = getRandom(1, 90);
+  const firstNumber = getRandom(secondNumber, 900);
   var solution = firstNumber - secondNumber;
   var question = firstNumber + ' - ' + secondNumber + ' = ?';
   var firstNumber2 = firstNumber + 10;
