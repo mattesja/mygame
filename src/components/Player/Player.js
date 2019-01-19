@@ -48,11 +48,12 @@ export default createPureComponent({
 
   onKeyDown(key, e) {
     e.preventDefault();
-    if (this.isMoveKey(key)) {
-      this.props.onMove(key);
-    }
-    else if (this.isNumberKey(key)) {
+
+    if (this.isNumberKey(key) || key === 'backspace' || key === 'enter') {
       this.props.onSolve(key);
+    }
+    else if (this.isMoveKey(key)) {
+      this.props.onMove(key);
     }
     else if (this.isCommandKey(key)) {
       this.props.command(key);

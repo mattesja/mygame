@@ -1,8 +1,6 @@
 import flow from 'lodash/function/flow';
-import { playSound } from 'utils/sound';
+import {playSound} from 'utils/sound';
 import Immutable from 'immutable';
-
-import buildModel from 'state/utils/buildModel';
 
 export const type = 'SOLVE';
 
@@ -15,29 +13,37 @@ export function answerQuiz(state, key) {
   const entity = state.get('entity');
   var keybuffer = state.get('keybuffer');
   if (entity && entity.get('type') === 'houseA') {
-    if (quiz && quiz.get('solution') === keybuffer + key) {
-      console.log('solved');
+    if (key === 'enter') {
+      if (quiz && quiz.get('solution') === keybuffer) {
+          console.log('solved');
 
-      if (quiz.get('question2')) {
-        playSound('oh');
-        return flow(incrementHealth, askQuiz2, resetKeybuffer)(state);
+          if (quiz.get('question2')) {
+            playSound('oh');
+            return flow(incrementHealth, askQuiz2, resetKeybuffer)(state);
+          } else {
+            playSound('sunglasses');
+            return flow(incrementHealth, askNewQuiz, resetKeybuffer)(state);
+          }
       } else {
-        playSound('sunglasses');
-        return flow(incrementHealth, askNewQuiz, resetKeybuffer)(state);
+        console.log('wrong');
+        playSound('hit-shriek');
+        return flow(decrementHealth, resetKeybuffer)(state);
+      }
+    } if (key === 'backspace') {
+      if (keybuffer.length > 0) {
+        playSound('klick');
+        return state.update('keybuffer', (k) => k.slice(0, -1));
+      } else {
+        return state;
       }
     }
     else if (quiz) {
       var solution = quiz.get('solution');
       var keybuffer = state.get('keybuffer');
-      if (solution.length > keybuffer.length + 1 && solution[keybuffer.length]===key) { // only relevant for solutions with multiple digits
         console.log('partial key ' + key + ' solution ' + solution + ' keybuffer ' + keybuffer);
         playSound('klick');
         return state.update('keybuffer', (k) => k + key);
-      }
     }
-    console.log('wrong');
-    playSound('hit-shriek');
-    return flow(decrementHealth, resetKeybuffer)(state);
   }
   else { // key pressed outside house -> ignore
     return state;
