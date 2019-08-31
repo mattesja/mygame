@@ -31,7 +31,7 @@ export default createPureComponent({
   },
 
   isNumberKey(key) {
-    return key===',' || !isNaN(key);
+    return !isNaN(key);
   },
 
   isMoveKey(key) {
@@ -49,7 +49,7 @@ export default createPureComponent({
   onKeyDown(key, e) {
     e.preventDefault();
 
-    if (this.isNumberKey(key) || key === 'backspace' || key === 'enter') {
+    if (this.isNumberKey(key) || key === 'backspace' || key === 'enter' || key === ',') {
       this.props.onSolve(key);
     }
     else if (this.isMoveKey(key)) {

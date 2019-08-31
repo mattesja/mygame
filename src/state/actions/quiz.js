@@ -384,8 +384,8 @@ export function askQuiz_komma() {
   value = value / power10(getRandom(1, 0))
 
   var question = value.toLocaleString() + ' ' + units[unit1] + ' = ? ' + units[unit2]; // + 'u1'+unit1 + 'u2'+unit2
-  var solutionNum = value * pots[unit2] / pots[unit1];
-  var solution = solutionNum.toLocaleString();
+  var solutionNum = value * pots[unit1] / pots[unit2];
+  var solution = solutionNum.toLocaleString('de-DE').replace('.','');
 
   return {
     question: question,

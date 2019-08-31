@@ -12,7 +12,8 @@ export const keyCodes = Object.freeze({
   40: 'down',
   8: 'backspace',
   13: 'enter',
-  14: 'enter'
+  14: 'enter',
+  188: ','
 });
 
 export const commandKeyCodes = Object.freeze({
