@@ -40,9 +40,14 @@ export function answerQuiz(state, key) {
     else if (quiz) {
       var solution = quiz.get('solution');
       var keybuffer = state.get('keybuffer');
-        console.log('partial key ' + key + ' solution ' + solution + ' keybuffer ' + keybuffer);
-        playSound('klick');
+      console.log('partial key ' + key + ' solution ' + solution + ' keybuffer ' + keybuffer);
+      playSound('klick');
+      if (keybuffer.length < 10) {
         return state.update('keybuffer', (k) => k + key);
+      }
+      else {
+        return state;
+      }
     }
   }
   else { // key pressed outside house -> ignore
@@ -111,8 +116,17 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'F') {
     return askQuiz_addition_10();
   }
+  else if (quizLevel === 'K') {
+    return askQuiz_komma();
+  }
+  else if (quizLevel === 'L') {
+    return askQuiz_addition_pair();
+  }
   else if (quizLevel === 'M') {
     return askQuiz_multiplication();
+  }
+  else if (quizLevel === 'N') {
+    return askQuiz_multiplication2();
   }
   else if (quizLevel === 'V') {
     return askQuiz_division();
@@ -231,7 +245,7 @@ export function askQuiz_addition_pair() {
 export function askQuiz_addition_pair_minus() {
 
   const order = getRandom(0, 4);
-  const secondNumber = getRandom(1, 90);
+  const secondNumber = getRandom(12, 90);
   const firstNumber = getRandom(secondNumber, 900);
   var solution = firstNumber - secondNumber;
   var question = firstNumber + ' - ' + secondNumber + ' = ?';
@@ -259,6 +273,38 @@ export function askQuiz_addition_pair_minus() {
 }
 
 
+export function askQuiz_addition_pair() {
+
+  const order = getRandom(0, 4);
+  const secondNumber = getRandom(12, 90);
+  const firstNumber = getRandom(300, 100);
+  var solution = firstNumber + secondNumber;
+  var question = firstNumber + ' + ' + secondNumber + ' = ?';
+  var firstNumber2 = firstNumber + 10;
+  var question2 = firstNumber2 + ' + ' + secondNumber + ' = ?';
+  var solution2 = solution + 10;
+
+  if (order >= 2) {
+    var solution3 = solution;
+    var question3 = question;
+    solution = solution2;
+    question = question2;
+    solution2 = solution3;
+    question2 = question3;
+  }
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: question2,
+    solution2: solution2 + ''
+  };
+}
+
+
+
 export function askQuiz_sum_100() {
 
   const firstNumber = getRandom(99, 1);
@@ -278,9 +324,10 @@ export function askQuiz_sum_100() {
 
 export function askQuiz_division() {
 
-  const divisor = getRandom(9, 3);
-  const potenz = getRandom(0,3);
-  const quotient = getRandom(2, 9) * Math.pow(10, potenz);
+  const potenz1 = getRandom(0,4);
+  const potenz2 = getRandom(0,4);
+  const quotient = getRandom(2, 9) * Math.pow(10, potenz1);
+  const divisor = 5 * Math.pow(10, potenz2);
   const dividend = divisor * quotient;
   var question = dividend + ' : ' + divisor + ' = ?';
 
@@ -305,6 +352,53 @@ export function askQuiz_multiplication() {
     solution2: undefined
   };
 }
+export function askQuiz_multiplication2() {
+
+  const factor1 = getRandom(9, 2);
+  const factor2 = getRandom(10, 99);
+  const product = factor1 * factor2;
+  var question = factor1 + ' • ' + factor2 + ' = ?';
+
+  return {
+    question: question,
+    solution: product + '',
+    question2: undefined,
+    solution2: undefined
+  };
+}
+
+export function askQuiz_komma() {
+
+  const units = ['km', 'm', 'cm', 'mm'];
+  const pots = [1000, 1, 0.01, 0.001];
+
+  const unit1 = getRandom(2, 0);
+  var unit2;
+  if (unit1 == 0) { // km
+    unit2 = 1; // m
+  } else {
+    unit2 = getRandom(3, unit1+1);
+  }
+
+  var value = getRandom(1, 250) * 4;
+  value = value / power10(getRandom(1, 0))
+
+  var question = value.toLocaleString() + ' ' + units[unit1] + ' = ? ' + units[unit2]; // + 'u1'+unit1 + 'u2'+unit2
+  var solutionNum = value * pots[unit2] / pots[unit1];
+  var solution = solutionNum.toLocaleString();
+
+  return {
+    question: question,
+    solution: solution,
+    question2: undefined,
+    solution2: undefined
+  };
+}
+
+export function power10(power) {
+  return Math.pow(10, power)
+}
+
 export function askQuiz_cheat() {
 
   const firstNumber = 1;

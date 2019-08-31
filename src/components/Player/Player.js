@@ -31,7 +31,7 @@ export default createPureComponent({
   },
 
   isNumberKey(key) {
-    return !isNaN(key);
+    return key===',' || !isNaN(key);
   },
 
   isMoveKey(key) {
