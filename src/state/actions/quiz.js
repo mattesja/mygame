@@ -372,7 +372,7 @@ export function askQuiz_komma() {
   const units = ['km', 'm', 'cm', 'mm'];
   const pots = [1000, 1, 0.01, 0.001];
 
-  const unit1 = getRandom(2, 0);
+  var unit1 = getRandom(2, 0);
   var unit2;
   if (unit1 == 0) { // km
     unit2 = 1; // m
@@ -381,11 +381,22 @@ export function askQuiz_komma() {
   }
 
   var value = getRandom(1, 250) * 4;
-  value = value / power10(getRandom(1, 0))
+  value = value / power10(getRandom(2, 0));
+
+  const reverse = getRandom(1, 0);
+  var solutionNum;
+  if (reverse == 1) {
+    var unittmp = unit1;
+    unit1 = unit2;
+    unit2 = unittmp;
+    solutionNum = value / pots[unit1] * pots[unit2];
+  } else {
+    solutionNum = value * pots[unit1] / pots[unit2];
+  }
 
   var question = value.toLocaleString() + ' ' + units[unit1] + ' = ? ' + units[unit2]; // + 'u1'+unit1 + 'u2'+unit2
   var solutionNum = value * pots[unit1] / pots[unit2];
-  var solution = solutionNum.toLocaleString('de-DE').replace('.','');
+  var solution = solutionNum.toLocaleString('de-DE', {maximumFractionDigits:5}).replace('.','');
 
   return {
     question: question,
