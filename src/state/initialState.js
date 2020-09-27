@@ -12,7 +12,7 @@ export const initialState = Immutable.fromJS({
   numTapes: 0,
   keybuffer: '',
   deaths: 0,
-  time: 10 * 60,
+  time: 120 * 60,
   powerups: [],
   // powerups: ['speedboat', 'hammer', 'boots', 'sunglasses','silverware'],
   health: 2,
