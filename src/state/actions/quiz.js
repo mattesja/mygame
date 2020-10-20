@@ -99,13 +99,13 @@ function askQuizIn(quizLevel) {
 export function askQuiz(quizLevel) {
 
   if (quizLevel === 'A') {
-    return askQuiz_addition_pair();
+    return askQuiz_sum_10();
   }
   else if (quizLevel === 'B') {
     return askQuiz_addition_pair_minus();
   }
   else if (quizLevel === 'C') {
-    return askQuiz_sum_100();
+    return askQuiz_sum_10();
   }
   else if (quizLevel === 'D') {
     return askQuiz_minus_over_10();
@@ -114,7 +114,7 @@ export function askQuiz(quizLevel) {
     return askQuiz_random_type();
   }
   else if (quizLevel === 'F') {
-    return askQuiz_addition_10();
+    return askQuiz_addition_pair2();
   }
   else if (quizLevel === 'K') {
     return askQuiz_komma();
@@ -134,13 +134,13 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'Q') {
     return askQuiz_cheat();
   }
-  return askQuiz_division();
+  return askQuiz_addition_pair();
 }
 
 export function askQuiz_addition_10() {
 
-  const firstNumber = getRandom(9, 1);
-  const secondNumber = getRandom(10, 3);
+  const firstNumber = getRandom(5, 1);
+  const secondNumber = getRandom(5, 3);
   var solution = secondNumber + firstNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ? ';
 
@@ -173,10 +173,10 @@ export function askQuiz_sum_10() {
 
 export function askQuiz_minus_over_10() {
 
-  const firstNumber = getRandom(12, 5);
-  const secondNumber = getRandom(8, 4);
-  var solution = firstNumber + secondNumber;
-  var question = firstNumber + ' + ' + secondNumber + ' = ?';
+  const firstNumber = getRandom(10, 3);
+  const secondNumber = getRandom(firstNumber-1, 2);
+  var solution = firstNumber - secondNumber;
+  var question = firstNumber + ' - ' + secondNumber + ' = ?';
 
   console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
 
@@ -245,8 +245,8 @@ export function askQuiz_addition_pair() {
 export function askQuiz_addition_pair_minus() {
 
   const order = getRandom(0, 4);
-  const secondNumber = getRandom(12, 90);
-  const firstNumber = getRandom(secondNumber, 900);
+  const secondNumber = getRandom(9, 1);
+  const firstNumber = getRandom(secondNumber, 89);
   var solution = firstNumber - secondNumber;
   var question = firstNumber + ' - ' + secondNumber + ' = ?';
   var firstNumber2 = firstNumber + 10;
@@ -273,11 +273,40 @@ export function askQuiz_addition_pair_minus() {
 }
 
 
-export function askQuiz_addition_pair() {
+export function askQuiz_addition_pair2() {
 
   const order = getRandom(0, 4);
   const secondNumber = getRandom(12, 90);
   const firstNumber = getRandom(300, 100);
+  var solution = firstNumber + secondNumber;
+  var question = firstNumber + ' + ' + secondNumber + ' = ?';
+  var firstNumber2 = firstNumber + 10;
+  var question2 = firstNumber2 + ' + ' + secondNumber + ' = ?';
+  var solution2 = solution + 10;
+
+  if (order >= 2) {
+    var solution3 = solution;
+    var question3 = question;
+    solution = solution2;
+    question = question2;
+    solution2 = solution3;
+    question2 = question3;
+  }
+
+  console.log('askQuiz() ' + question + "==" + solution + " "+ firstNumber + " " + secondNumber + " " );
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: question2,
+    solution2: solution2 + ''
+  };
+}
+export function askQuiz_addition_pair() {
+
+  const order = getRandom(0, 4);
+  const secondNumber = getRandom(1, 9);
+  const firstNumber = getRandom(5, 80);
   var solution = firstNumber + secondNumber;
   var question = firstNumber + ' + ' + secondNumber + ' = ?';
   var firstNumber2 = firstNumber + 10;
@@ -322,12 +351,29 @@ export function askQuiz_sum_100() {
   };
 }
 
+export function askQuiz_sum_10() {
+
+  const firstNumber = getRandom(10, 1);
+  const secondNumber = 10;
+  var solution = secondNumber - firstNumber;
+  var question = firstNumber + ' + ? = ' + secondNumber;
+
+  console.log('askQuiz() ' + question + "==" + solution + " " + firstNumber + " " + secondNumber + " ");
+
+  return {
+    question: question,
+    solution: solution + '',
+    question2: undefined,
+    solution2: undefined
+  };
+}
+
 export function askQuiz_division() {
 
-  const potenz1 = getRandom(0,4);
-  const potenz2 = getRandom(0,4);
+  const potenz1 = getRandom(2,0);
+  const potenz2 = getRandom(1,0);
   const quotient = getRandom(2, 9) * Math.pow(10, potenz1);
-  const divisor = 5 * Math.pow(10, potenz2);
+  const divisor = getRandom(2, 9) * Math.pow(10, potenz2);
   const dividend = divisor * quotient;
   var question = dividend + ' : ' + divisor + ' = ?';
 
