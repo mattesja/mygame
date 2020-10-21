@@ -102,7 +102,7 @@ export function askQuiz(quizLevel) {
     return askQuiz_sum_10();
   }
   else if (quizLevel === 'B') {
-    return askQuiz_addition_pair_minus();
+    return askQuiz_fraction();
   }
   else if (quizLevel === 'C') {
     return askQuiz_sum_10();
@@ -113,7 +113,7 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'E') {
     return askQuiz_random_type();
   }
-  else if (quizLevel === 'F') {
+  else if (quizLevel === 'P') {
     return askQuiz_addition_pair2();
   }
   else if (quizLevel === 'K') {
@@ -134,7 +134,7 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'Q') {
     return askQuiz_cheat();
   }
-  return askQuiz_addition_pair();
+  return askQuiz_fraction();
 }
 
 export function askQuiz_addition_10() {
@@ -413,6 +413,28 @@ export function askQuiz_multiplication2() {
   };
 }
 
+export function askQuiz_fraction() {
+
+  const nennerValues = [2, 4, 5];
+
+  var nenner = nennerValues[getRandom(nennerValues.length - 1, 0)];
+  var zaehler = getRandom(6, 1);
+
+  if (zaehler === nenner) {
+    zaehler += 1;
+  }
+
+  var solutionNum = zaehler / nenner;
+  var solution = solutionNum.toLocaleString('de-DE', {maximumFractionDigits:5});
+  var question = zaehler + ' / ' + nenner + ' = ? ';
+
+  return {
+    question: question,
+    solution: solution,
+    question2: undefined,
+    solution2: undefined
+  };
+}
 export function askQuiz_komma() {
 
   const units = ['km', 'm', 'cm', 'mm'];
