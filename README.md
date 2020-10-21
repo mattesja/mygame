@@ -30,5 +30,14 @@ This is a hackathon game that was created in about 24 (non consecutive) hours, a
 
 # Deployment
 
-npm build
+npm run-script build
+adapt index.html for target server
 copy index.html + static/bundle.js + assets/*.mp3 to target server
+
+
+# Add new level
+
+- add level file level-XX.js
+- edit changeLevel.js
+- add text to Instructions.js and entities.js
+- adjust const win
