@@ -15,6 +15,7 @@ import * as level3 from 'state/levels/level-03';
 import * as level4 from 'state/levels/level-04';
 import * as level5 from 'state/levels/level-05';
 import * as level6 from 'state/levels/level-06';
+import * as level7 from 'state/levels/level-07';
 
 import reset from 'state/utils/reset';
 
@@ -29,7 +30,8 @@ const levels = Object.freeze([
   level3,
   level4,
   level5,
-  level6
+  level6,
+  level7
 ]);
 
 const dataFor = curry((key, level) => {

@@ -9,7 +9,8 @@ const defaultText = [
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Du hast Dich jetzt in eine Großstadt verirrt. Kannst Du die Prinzession hier finden?',
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Du befindest Dich jetzt in einem dichten Dschungel. Kannst Du die Prinzession hier finden?',
   'Leider hast Du die Prinzessin immer noch nicht gefunden. Du befindest Dich jetzt einer Burg. Suche den König. Er wird Dir weiterhelfen.',
-  'Ich kann Dir leider nicht helfen.'
+  'Ich kann Dir leider nicht helfen.',
+  'Leider hast Du die Prinzessin immer noch nicht gefunden. Aber vielleicht kann Dir der Affe weiterhelfen.'
 ];
 
 function getText(text, gameLevel) {
