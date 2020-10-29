@@ -99,13 +99,13 @@ function askQuizIn(quizLevel) {
 export function askQuiz(quizLevel) {
 
   if (quizLevel === 'A') {
-    return askQuiz_sum_10();
+    return askQuiz_addition_pair_minus();
   }
   else if (quizLevel === 'B') {
     return askQuiz_fraction();
   }
   else if (quizLevel === 'C') {
-    return askQuiz_sum_10();
+    return askQuiz_fraction_shorten();
   }
   else if (quizLevel === 'D') {
     return askQuiz_minus_over_10();
@@ -134,7 +134,7 @@ export function askQuiz(quizLevel) {
   else if (quizLevel === 'Q') {
     return askQuiz_cheat();
   }
-  return askQuiz_fraction();
+  return askQuiz_fraction_shorten();
 }
 
 export function askQuiz_addition_10() {
@@ -415,7 +415,7 @@ export function askQuiz_multiplication2() {
 
 export function askQuiz_fraction() {
 
-  const nennerValues = [2, 4, 5];
+  const nennerValues = [2, 4, 5, 8, 10, 20, 25, 50, 40, 100, 200, 250, 500, 1000];
 
   var nenner = nennerValues[getRandom(nennerValues.length - 1, 0)];
   var zaehler = getRandom(6, 1);
@@ -435,6 +435,33 @@ export function askQuiz_fraction() {
     solution2: undefined
   };
 }
+
+
+export function askQuiz_fraction_shorten() {
+
+  const prim = [2, 3, 5, 7];
+  const multValues = [6, 7, 8, 9, 12, 15, 16, 40, 50];
+
+  var nenner = prim[getRandom(prim.length - 1, 0)];
+  var zaehler = prim[getRandom(prim.length - 1, 0)];
+
+  if (zaehler === nenner) {
+    zaehler += 1;
+  }
+
+  var mult = multValues[getRandom(multValues.length - 1, 0)];
+  var zaehler2 = zaehler * mult;
+  var nenner2 = nenner * mult;
+
+  return {
+    question: zaehler2+" = ?",
+    solution: zaehler + "",
+    question2: nenner2+"     ?",
+    solution2: nenner + ""
+  };
+}
+
+
 export function askQuiz_komma() {
 
   const units = ['km', 'm', 'cm', 'mm'];
